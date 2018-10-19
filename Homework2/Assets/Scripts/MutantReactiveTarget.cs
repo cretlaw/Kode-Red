@@ -1,0 +1,35 @@
+﻿using UnityEngine;
+using System.Collections;
+
+
+public class MutantReactiveTarget : MonoBehaviour
+{
+    private Animator _anim;
+
+
+
+    void Start()
+    {
+        _anim = GetComponent<Animator>();
+
+    }
+    public void ReactToHit()
+    {
+
+        StartCoroutine(Die());
+
+    }
+
+    private IEnumerator Die()
+    {
+        if (this.gameObject.tag == "mutant")
+        {
+            _anim.SetBool("isDying", true);
+
+            yield return new WaitForSeconds(10);
+
+            Destroy(this.gameObject);
+        }
+
+    }
+}
