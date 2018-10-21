@@ -2,9 +2,7 @@
 using System.Collections;
 
 public class MutantShoot : MonoBehaviour {
-	public float speed = 3.0f;
-	public float obstacleRange = 5.0f;
-	
+
 	[SerializeField] private GameObject fireballPrefab;
 	private GameObject _fireball;
 	
@@ -36,4 +34,3 @@ public class MutantShoot : MonoBehaviour {
 		_alive = alive;
 	}
 }
-

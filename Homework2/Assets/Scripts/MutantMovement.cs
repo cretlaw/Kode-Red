@@ -6,16 +6,15 @@ public class MutantMovement : MonoBehaviour {
 
     public Transform player;
     static Animator anim;
-    private MutantShoot _MS;
 
 	// Use this for initialization
 	void Start () {
         anim = GetComponent<Animator>();
-        _MS = GetComponent<MutantShoot>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        MutantShoot _MS = GetComponent<MutantShoot>();
         Vector3 direction = player.position - this.transform.position;
         float angle = Vector3.Angle(direction, this.transform.forward);
         if(Vector3.Distance(player.position, this.transform.position)< 10 && angle < 30){
@@ -39,6 +38,7 @@ public class MutantMovement : MonoBehaviour {
                     anim.SetBool("isJumping", false);
                     anim.SetBool("isIdle", false);
                     if(direction.magnitude > 8){
+                        this.transform.Translate(0,0,0.01f);
                         anim.SetBool("isRunning", false);
                         anim.SetBool("isWalking", false);
                         anim.SetBool("isAttacking", false);
@@ -48,6 +48,7 @@ public class MutantMovement : MonoBehaviour {
                 }
             }else{
                 anim.SetBool("isAttacking", true);
+                this.transform.Translate(0,0,0.01f);
                 _MS.enabled = true;
                 anim.SetBool("isWalking", false);
                 anim.SetBool("isRunning", false);
@@ -62,34 +63,4 @@ public class MutantMovement : MonoBehaviour {
             anim.SetBool("isJumping", false);
         }
 	}
-
-    private IEnumerator Run()
-    {
-        anim.SetBool("isRunning", true);
-        yield return new WaitForSeconds(10);
-    }
-
-    private IEnumerator Jump()
-    {
-        anim.SetBool("isJumping", true);
-        yield return new WaitForSeconds(10);
-    }
-
-    private IEnumerator Walk()
-    {
-        anim.SetBool("isWalking", true);
-        yield return new WaitForSeconds(10);
-    }
-
-    private IEnumerator Attack()
-    {
-        anim.SetBool("isAttacking", true);
-        yield return new WaitForSeconds(10);
-    }
-
-    private IEnumerator Idle(){
-        anim.SetBool("isIdle", true);
-        yield return new WaitForSeconds(10);
-    }
-
 }

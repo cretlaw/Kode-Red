@@ -15,7 +15,9 @@ public class MutantReactiveTarget : MonoBehaviour
     }
     public void ReactToHit()
     {
-
+        MutantShoot ms = GetComponent<MutantShoot>();
+        if ( ms!= null)
+            ms.SetAlive(false);
         StartCoroutine(Die());
 
     }
