@@ -1064,6 +1064,7 @@ GameObject:
   - component: {fileID: 195778837400078164}
   - component: {fileID: 114474978002938730}
   - component: {fileID: 114314855701905326}
+  - component: {fileID: 114538233284814784}
   - component: {fileID: 65505750103421732}
   m_Layer: 0
   m_Name: mutant2
@@ -1107,7 +1108,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1996921845711546}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -23.41, y: 0, z: -10.56}
+  m_LocalPosition: {x: -23.22, y: 0, z: -9.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4865482684748570}
@@ -2183,6 +2184,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _range: 12
+  IsAlert: 0
+--- !u!114 &114538233284814784
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1996921845711546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b71427ce8d87f3248a672bc3cf689d2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _alertDistance: 20
 --- !u!137 &137767980287914726
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

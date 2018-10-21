@@ -14,6 +14,9 @@ public class StaticShootingEnemy : MonoBehaviour
     private Animator _anim;
     private Gun _gun;
     private Vector3 _direction;
+    private float _alertDistance = 20f;
+    public bool IsAlert;
+    private Mutant2Controller _m2Controller;
 
     // Use this for initialization
     void Start()
@@ -22,44 +25,51 @@ public class StaticShootingEnemy : MonoBehaviour
         _alive = true;
         _anim = GetComponent<Animator>();
         _gun = GameObject.Find("TipOfGun").GetComponent<Gun>();
+        _m2Controller = gameObject.GetComponent<Mutant2Controller>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
         _distance = Vector3.Distance(this.transform.position, _player.transform.position);
-        if (_alive && _distance < _range)
+        if ((_alive && _distance < _range) || IsAlert)
         {
             _anim.SetBool("shootM2", true);
+            //TODO: Figure out why only one enemie can attack player at a time.
             AttackPlayer();
         }
-        else if(!_alive || _distance >= _range)
-        {
-            
-         
-           _anim.SetBool("shootM2", false);
-            
-        }
-        else
-            _anim.SetBool("die", true);
+        else if (!_alive || _distance >= _range)
+            _anim.SetBool("shootM2", false);
+
     }
 
 
     private void AttackPlayer()
     {
-       _direction = _player.position - this.transform.position;
-        this.transform.rotation =   Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(_direction), 0.1f );
-           
+        _m2Controller.AlertOthers();
+        _direction = _player.position - this.transform.position;
+        this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(_direction), 0.1f);
+
         _gun.ShootWeapon();
 
     }
 
+   
 
     public void SetAlive(bool alive)
     {
         _alive = alive;
     }
+
+    /*public void SetAlert(bool alert)
+    {
+        _isAlert = alert;
+    }*/
+
+
+
 
 }
 
