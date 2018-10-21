@@ -31,7 +31,7 @@ public class ReactiveTarget : MonoBehaviour
         {
             _anim.SetBool("dieM2", true);
 
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(5);
 
             Destroy(this.gameObject);
         }

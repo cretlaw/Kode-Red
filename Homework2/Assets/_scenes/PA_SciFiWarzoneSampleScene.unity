@@ -13961,7 +13961,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 720130484}
   serializedVersion: 5
-  lengthInSec: 0.1
+  lengthInSec: 1
   simulationSpeed: 1
   stopAction: 0
   looping: 0
@@ -28181,6 +28181,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1085318256}
+  - component: {fileID: 1085318257}
   m_Layer: 0
   m_Name: TipOfGun
   m_TagString: Untagged
@@ -28194,14 +28195,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1085318255}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.7660445, y: 0, z: 0, w: 0.64278764}
   m_LocalPosition: {x: 0.0039, y: 0.283, z: 0.035}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 720130485}
   m_Father: {fileID: 1239843418}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -100, y: 0, z: 0}
+--- !u!114 &1085318257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1085318255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dccc0348dbae9343940f137a2c7e3ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1086126176
 Prefab:
   m_ObjectHideFlags: 0
@@ -30599,7 +30611,6 @@ GameObject:
   - component: {fileID: 1239843418}
   - component: {fileID: 1239843421}
   - component: {fileID: 1239843420}
-  - component: {fileID: 1239843419}
   m_Layer: 0
   m_Name: M2Gun
   m_TagString: Untagged
@@ -30622,18 +30633,6 @@ Transform:
   m_Father: {fileID: 1553505897}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!114 &1239843419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114583924657580706, guid: 72e77ec983d369f43bcf574fe6717ed8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1239843417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dccc0348dbae9343940f137a2c7e3ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &1239843420
 MeshRenderer:
   m_ObjectHideFlags: 0
