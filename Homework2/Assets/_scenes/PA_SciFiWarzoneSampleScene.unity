@@ -35178,6 +35178,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2002638269}
+--- !u!1 &1573708592 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1447746233645684, guid: 05c9708424b74a444a59064703ea766c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1573708588}
+--- !u!114 &1573708593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1573708592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d3da177551e4eaaa74d7f3460727b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  obstacleRange: 5
+  fireballPrefab: {fileID: 1956094904363052, guid: 1f9ef580ea5794f8c9de10a4c5fab2d6,
+    type: 2}
 --- !u!4 &1574070318 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: ce105e26bb8d02b4285b25116d8bf6cc,

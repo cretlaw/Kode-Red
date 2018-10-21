@@ -6,10 +6,12 @@ public class MutantMovement : MonoBehaviour {
 
     public Transform player;
     static Animator anim;
+    private MutantShoot _MS;
 
 	// Use this for initialization
 	void Start () {
         anim = GetComponent<Animator>();
+        _MS = GetComponent<MutantShoot>();
 	}
 	
 	// Update is called once per frame
@@ -36,7 +38,7 @@ public class MutantMovement : MonoBehaviour {
                     anim.SetBool("isAttacking", false);
                     anim.SetBool("isJumping", false);
                     anim.SetBool("isIdle", false);
-                    if(direction.magnitude > 7){
+                    if(direction.magnitude > 8){
                         anim.SetBool("isRunning", false);
                         anim.SetBool("isWalking", false);
                         anim.SetBool("isAttacking", false);
@@ -46,6 +48,7 @@ public class MutantMovement : MonoBehaviour {
                 }
             }else{
                 anim.SetBool("isAttacking", true);
+                _MS.enabled = true;
                 anim.SetBool("isWalking", false);
                 anim.SetBool("isRunning", false);
                 anim.SetBool("isJumping", false);
@@ -62,7 +65,7 @@ public class MutantMovement : MonoBehaviour {
 
     private IEnumerator Run()
     {
-         anim.SetBool("isRunning", true);
+        anim.SetBool("isRunning", true);
         yield return new WaitForSeconds(10);
     }
 
