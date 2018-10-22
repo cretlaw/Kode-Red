@@ -30,7 +30,7 @@ public class MutantMovement : MonoBehaviour {
                 anim.SetBool("isRunning", false);
                 anim.SetBool("isJumping", false);
                 anim.SetBool("isIdle", false);
-                if(direction.magnitude > 6){
+                if(direction.magnitude > 7){
                     this.transform.Translate(0, 0, 0.07f);
                     anim.SetBool("isRunning", true);
                     anim.SetBool("isWalking", false);
@@ -38,7 +38,7 @@ public class MutantMovement : MonoBehaviour {
                     anim.SetBool("isJumping", false);
                     anim.SetBool("isIdle", false);
                     if(direction.magnitude > 8){
-                        this.transform.Translate(0,0,0.01f);
+                        this.transform.Translate(0,0,0.0f);
                         anim.SetBool("isRunning", false);
                         anim.SetBool("isWalking", false);
                         anim.SetBool("isAttacking", false);
@@ -46,9 +46,10 @@ public class MutantMovement : MonoBehaviour {
                         anim.SetBool("isIdle", false);
                     }
                 }
-            }else{
+            }
+            else{
                 anim.SetBool("isAttacking", true);
-                this.transform.Translate(0,0,0.01f);
+                this.transform.Translate(0,0,0.0f);
                 _MS.enabled = true;
                 anim.SetBool("isWalking", false);
                 anim.SetBool("isRunning", false);
@@ -57,6 +58,7 @@ public class MutantMovement : MonoBehaviour {
             }
         }else{
             anim.SetBool("isIdle", true);
+            this.transform.Translate(0,0,0.00f);
             anim.SetBool("isWalking", false);
             anim.SetBool("isAttacking", false);
             anim.SetBool("isRunning", false);
