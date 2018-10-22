@@ -26415,6 +26415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _range: 12
+  IsAlert: 0
 --- !u!195 &945820262
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -36995,7 +36996,6 @@ GameObject:
   - component: {fileID: 1687768595}
   - component: {fileID: 1687768594}
   - component: {fileID: 1687768593}
-  - component: {fileID: 1687768599}
   - component: {fileID: 1687768598}
   m_Layer: 0
   m_Name: Main Camera
@@ -37095,23 +37095,6 @@ MonoBehaviour:
   sensitivityVert: 9
   minimumVert: -30
   maximumVert: 30
---- !u!114 &1687768599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1687768592}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85cd1feeca42f4849804dc921875ba69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerGun: 0
-  _currentGun: 0
-  _handGunBulletHolePrefab: {fileID: 1602838324569054, guid: c1de72ecff114ba448c97527ddb95013,
-    type: 2}
-  _riffleBulletHolePrefab: {fileID: 1929904197115760, guid: 8a55e6ffd17a9084fb97aa5a771a690f,
-    type: 2}
 --- !u!1001 &1687841164
 Prefab:
   m_ObjectHideFlags: 0
