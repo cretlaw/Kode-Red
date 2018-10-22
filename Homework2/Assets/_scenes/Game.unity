@@ -26293,6 +26293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _range: 12
+  IsAlert: 0
 --- !u!195 &945820262
 NavMeshAgent:
   m_ObjectHideFlags: 0
