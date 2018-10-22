@@ -14,7 +14,6 @@ public class StaticShootingEnemy : MonoBehaviour
     private Animator _anim;
     private Gun _gun;
     private Vector3 _direction;
-    private float _alertDistance = 20f;
     public bool IsAlert;
     private Mutant2Controller _m2Controller;
 
