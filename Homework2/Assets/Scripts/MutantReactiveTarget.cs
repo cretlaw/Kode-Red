@@ -6,8 +6,6 @@ public class MutantReactiveTarget : MonoBehaviour
 {
     private Animator _anim;
 
-
-
     void Start()
     {
         _anim = GetComponent<Animator>();
@@ -28,7 +26,7 @@ public class MutantReactiveTarget : MonoBehaviour
         {
             _anim.SetBool("isDying", true);
 
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(5);
 
             Destroy(this.gameObject);
         }

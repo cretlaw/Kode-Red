@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-
     private ParticleSystem _muzzleFlash;
      private Transform _player;
 
@@ -15,8 +14,6 @@ public class Gun : MonoBehaviour
         GameObject muzzleFlashObj = GameObject.Find("muzzleFlash");
         _muzzleFlash = muzzleFlashObj.GetComponent<ParticleSystem>();
     }
-
-
 
     public void ShootWeapon()
     {
@@ -33,8 +30,6 @@ public class Gun : MonoBehaviour
                 Debug.Log("Player HIT!");
                 _muzzleFlash.Play();
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.green);
-                
-
             }
             else
             {

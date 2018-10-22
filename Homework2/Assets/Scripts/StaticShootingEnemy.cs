@@ -32,7 +32,6 @@ public class StaticShootingEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         _distance = Vector3.Distance(this.transform.position, _player.transform.position);
         if ((_alive && _distance < _range) || IsAlert)
         {
@@ -45,7 +44,6 @@ public class StaticShootingEnemy : MonoBehaviour
 
     }
 
-
     private void AttackPlayer()
     {
         _m2Controller.AlertOthers();
@@ -55,8 +53,6 @@ public class StaticShootingEnemy : MonoBehaviour
         _gun.ShootWeapon();
 
     }
-
-   
 
     public void SetAlive(bool alive)
     {

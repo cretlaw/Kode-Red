@@ -20,7 +20,7 @@ public class MutantShoot : MonoBehaviour {
 			if (Physics.SphereCast(ray, 0.75f, out hit)) {
 				GameObject hitObject = hit.transform.gameObject;
 				if (hitObject.GetComponent<PlayerController>()) {
-					if (_fireball == null) {
+					if (_fireball == null) { //fireball != null
 						_fireball = Instantiate(fireballPrefab) as GameObject;
 						_fireball.transform.position = transform.TransformPoint(Vector3.forward * 1.5f);
 						_fireball.transform.rotation = transform.rotation;

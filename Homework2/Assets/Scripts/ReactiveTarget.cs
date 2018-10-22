@@ -6,8 +6,6 @@ public class ReactiveTarget : MonoBehaviour
 {
     private Animator _anim;
     
-
-
     void Start()
     {
         _anim = GetComponent<Animator>();
