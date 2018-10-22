@@ -13,18 +13,17 @@ public class WeaponsController : MonoBehaviour
     [SerializeField]
     private enum Guns
     {
-        Handgun = 0,
-        Shotgun = 1,
-        Rifle = 2
+        Rifle = 0,
+        Smg = 1
 
     }
     //Setting the initial player weapon to handgun
-    [SerializeField] private Guns _playerGun = Guns.Handgun;
+    [SerializeField] private Guns _playerGun;
+    public int _currentGun;
 
     private Camera _camera;
 
     [SerializeField] private GameObject _handGunBulletHolePrefab;
-    [SerializeField] private GameObject _shotGunBulletHolePrefab;
     [SerializeField] private GameObject _riffleBulletHolePrefab;
     private GameObject _BulletHole;
 
@@ -32,7 +31,11 @@ public class WeaponsController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        _camera = GetComponent<Camera>();
+        // refer to the camera parent of the weapons object
+        _camera = GetComponentInParent<Camera>();
+
+        _playerGun = Guns.Rifle;
+        _currentGun = 0;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -80,11 +83,16 @@ public class WeaponsController : MonoBehaviour
 
         }
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1)) {
+            // toggle between weapon 0 and 1
+            if(_currentGun == 0) {
+                _currentGun = 1;
+            }
+            else if(_currentGun == 1) {
+                _currentGun = 0;
+            }
             SwitchWeapons();
-
-
-
+        }
     }
 
     private IEnumerator BulletholeIndicator()
@@ -98,39 +106,39 @@ public class WeaponsController : MonoBehaviour
 
     private void SwitchWeapons()
     {
-        if (_playerGun == Guns.Handgun)
-        {
-            _playerGun = Guns.Shotgun;
-            Debug.Log("Shotgun now selected!");
-
+        int weaponIndex = 0;
+        foreach(Transform weapon in transform) {
+            if (weaponIndex == _currentGun)
+            {
+                Debug.Log("Weapon Index: " + weaponIndex.ToString());
+                switch(weaponIndex) {
+                    case(0):
+                        _playerGun = Guns.Rifle;
+                        Debug.Log("Rifle now selected!");
+                        break;
+                    case(1):
+                        _playerGun = Guns.Smg;
+                        Debug.Log("Smg now selected!");
+                        break;
+                }
+                weapon.gameObject.SetActive(true);
+            }
+            else 
+            {
+                weapon.gameObject.SetActive(false);
+            }
+            weaponIndex++;
         }
 
-        else if (_playerGun == Guns.Shotgun)
-        {
-            _playerGun = Guns.Rifle;
-            Debug.Log("Riffle now selected!");
-        }
-
-        else if (_playerGun == Guns.Rifle)
-        {
-            _playerGun = Guns.Handgun;
-            Debug.Log("Handgun now Selected!");
-        }
     }
 
     private void SwitchBulletHoles(Vector3 normal, Vector3 pos)
     {
-        if (_playerGun == Guns.Handgun)
+        if (_playerGun == Guns.Smg)
         {
             _BulletHole = Instantiate(_handGunBulletHolePrefab, pos, Quaternion.FromToRotation(Vector3.up, normal));
             StartCoroutine(BulletholeIndicator());
 
-        }
-
-        else if (_playerGun == Guns.Shotgun)
-        {
-            _BulletHole = Instantiate(_shotGunBulletHolePrefab, pos, Quaternion.FromToRotation(Vector3.up, normal));
-            StartCoroutine(BulletholeIndicator());
         }
 
         else if (_playerGun == Guns.Rifle)
