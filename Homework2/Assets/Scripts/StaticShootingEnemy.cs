@@ -23,7 +23,6 @@ public class StaticShootingEnemy : MonoBehaviour
         _player = GameObject.Find("Player").transform;
         _alive = true;
         _anim = GetComponent<Animator>();
-        //TODO:Find the instance within the of TipOfGun
         _gun = GetComponentInChildren<Gun>();
         _m2Controller = gameObject.GetComponent<Mutant2Controller>();
 
@@ -39,7 +38,7 @@ public class StaticShootingEnemy : MonoBehaviour
             _anim.SetBool("shootM2", true);
             AttackPlayer();
         }
-        else if (!_alive || _distance >= _range)
+        else if (!_alive || _distance >= _range) 
             _anim.SetBool("shootM2", false);
 
     }
@@ -62,10 +61,7 @@ public class StaticShootingEnemy : MonoBehaviour
         _alive = alive;
     }
 
-    /*public void SetAlert(bool alert)
-    {
-        _isAlert = alert;
-    }*/
+    
 
 
 
