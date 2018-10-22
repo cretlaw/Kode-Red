@@ -14,7 +14,7 @@ public class PortalController : MonoBehaviour
             other.transform.position = new Vector3(19.78f, 1, 1.73f);
         else if(this.gameObject.tag == "Portal3")
             other.transform.position = new Vector3(-16.02f, 4.66f, -21.18f);
-        else 
+        else if(this.gameObject.tag == "Portal4")
             other.transform.position = new Vector3(-58.84f,1, 1.43f);
 
     }
