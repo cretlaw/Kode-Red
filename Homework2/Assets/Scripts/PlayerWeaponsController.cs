@@ -6,7 +6,7 @@ using UnityEngine;
 
 //This script will act as the controller for the player's weapon system.
 //Allowing enemy to switch guns, shoot bullets to harm enemies and create bulletholes.
-public class WeaponsController : MonoBehaviour
+public class PlayerWeaponsController : MonoBehaviour
 {
 
     //storing different guns
