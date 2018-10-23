@@ -68,7 +68,9 @@ sysinfo.txt
 .consulo/
 /*.tmp
 /*.svd
- 
+.vscode/
+.vscode/** 
+
 # ============ #
 # OS generated #
 # ============ #
