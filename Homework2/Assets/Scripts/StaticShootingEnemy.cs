@@ -14,7 +14,6 @@ public class StaticShootingEnemy : MonoBehaviour
     private Animator _anim;
     private Gun _gun;
     private Vector3 _direction;
-    private float _alertDistance = 20f;
     public bool IsAlert;
     private Mutant2Controller _m2Controller;
 
@@ -24,7 +23,7 @@ public class StaticShootingEnemy : MonoBehaviour
         _player = GameObject.Find("Player").transform;
         _alive = true;
         _anim = GetComponent<Animator>();
-        _gun = GameObject.Find("TipOfGun").GetComponent<Gun>();
+        _gun = GetComponentInChildren<Gun>();
         _m2Controller = gameObject.GetComponent<Mutant2Controller>();
 
     }
@@ -36,10 +35,9 @@ public class StaticShootingEnemy : MonoBehaviour
         if ((_alive && _distance < _range) || IsAlert)
         {
             _anim.SetBool("shootM2", true);
-            //TODO: Figure out why only one enemie can attack player at a time.
             AttackPlayer();
         }
-        else if (!_alive || _distance >= _range)
+        else if (!_alive || _distance >= _range) 
             _anim.SetBool("shootM2", false);
 
     }
@@ -59,10 +57,7 @@ public class StaticShootingEnemy : MonoBehaviour
         _alive = alive;
     }
 
-    /*public void SetAlert(bool alert)
-    {
-        _isAlert = alert;
-    }*/
+    
 
 
 

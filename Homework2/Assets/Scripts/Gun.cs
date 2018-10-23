@@ -11,8 +11,8 @@ public class Gun : MonoBehaviour
     void Start()
     {
         _player = GameObject.Find("Player").transform;
-        GameObject muzzleFlashObj = GameObject.Find("muzzleFlash");
-        _muzzleFlash = muzzleFlashObj.GetComponent<ParticleSystem>();
+        
+        _muzzleFlash = GetComponentInChildren<ParticleSystem>();
     }
 
     public void ShootWeapon()
