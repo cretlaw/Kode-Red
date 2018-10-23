@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class Mutant2Controller : MonoBehaviour {
@@ -28,9 +29,28 @@ public class Mutant2Controller : MonoBehaviour {
                 if (_distance < _alertDistance)
                     m2.GetComponent<StaticShootingEnemy>().IsAlert = true;
             }
+
+
         }
 
-        //TODO: Do something similar to mutant2 and bystander
+        StartCoroutine(TimerForAlertness(mutants2));
+
 
     }
+
+    IEnumerator TimerForAlertness(GameObject [] mutants2)
+    {
+        yield return new WaitForSeconds(10);
+
+        foreach (var m2 in mutants2)
+        {
+            _distance = Vector3.Distance(this.transform.position, _player.transform.position);
+            if (_distance < _alertDistance)
+                m2.GetComponent<StaticShootingEnemy>().IsAlert = false;
+        }
+    }
+   
+   
+
+    //TODO: Do something similar to mutant and bystander
 }
