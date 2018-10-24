@@ -10,6 +10,7 @@ public class MutantMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator>();
+	    player = GameObject.Find("Player").transform;
 	}
 	
 	// Update is called once per frame
