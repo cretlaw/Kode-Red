@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: beb463389928a0b43b61e3b51dffdca9
+guid: 9bb885be92d424d16a213ea1122663b9
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -86,25 +86,10 @@ ModelImporter:
     7400000: mixamo.com
     9500000: //RootNode
     13700000: MutantMesh
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: mutant_M
-    second: {fileID: 2100000, guid: 7c7c25162713cea4eb10797eafc9d3e8, type: 2}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Mutant_diffuse
-    second: {fileID: 2800000, guid: b1a3ada67c0345043b171e3193c90608, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Mutant_normal
-    second: {fileID: 2800000, guid: 3e81bcc48bb84964f9dd4cb75afdf80a, type: 3}
+  externalObjects: {}
   materials:
     importMaterials: 1
-    materialName: 1
+    materialName: 0
     materialSearch: 1
     materialLocation: 1
   animations:
@@ -119,8 +104,8 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    importAnimatedCustomProperties: 1
-    importConstraints: 1
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5

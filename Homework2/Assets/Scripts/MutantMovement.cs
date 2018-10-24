@@ -17,7 +17,7 @@ public class MutantMovement : MonoBehaviour {
 		MutantShoot _MS = GetComponent<MutantShoot>();
 		Vector3 direction = player.position - this.transform.position;
 		float angle = Vector3.Angle(direction, this.transform.forward);
-		if(Vector3.Distance(player.position, this.transform.position)< 10 && angle < 30){
+		if(Vector3.Distance(player.position, this.transform.position)< 10 && angle < 50){
 			direction.y = 0;
 
 			this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(direction), 0.1f);
@@ -29,31 +29,19 @@ public class MutantMovement : MonoBehaviour {
 				anim.SetBool("isWalking", true);
 				anim.SetBool("isAttacking", false);
 				anim.SetBool("isRunning", false);
-				anim.SetBool("isJumping", false);
 				anim.SetBool("isIdle", false);
-				if(direction.magnitude > 6){
+				
+				if(direction.magnitude > 6.5){
 					this.transform.Translate(0, 0, 0.07f);
 					anim.SetBool("isRunning", true);
 					anim.SetBool("isWalking", false);
 					anim.SetBool("isAttacking", false);
-					anim.SetBool("isJumping", false);
 					anim.SetBool("isIdle", false);
-					if(direction.magnitude > 8){
-						this.transform.Translate(0,0,0.01f);
-						anim.SetBool("isRunning", false);
-						anim.SetBool("isWalking", false);
-						anim.SetBool("isAttacking", false);
-						anim.SetBool("isJumping", true);
-						anim.SetBool("isIdle", false);
-					}
 				}
 			}else{
 				anim.SetBool("isAttacking", true);
-				this.transform.Translate(0,0,0.01f);
-				_MS.enabled = true;
 				anim.SetBool("isWalking", false);
 				anim.SetBool("isRunning", false);
-				anim.SetBool("isJumping", false);
 				anim.SetBool("isIdle", false);
 			}
 		}else{
@@ -61,7 +49,6 @@ public class MutantMovement : MonoBehaviour {
 			anim.SetBool("isWalking", false);
 			anim.SetBool("isAttacking", false);
 			anim.SetBool("isRunning", false);
-			anim.SetBool("isJumping", false);
 		}
 	}
 }
