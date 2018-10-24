@@ -21736,6 +21736,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7257366638d8faa49962170d5a774b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemyPrefabs:
+  - {fileID: 1501174553512714, guid: 35ddb0db4a2908e46928ad59a734de4a, type: 2}
+  - {fileID: 1336794588793064, guid: 72e77ec983d369f43bcf574fe6717ed8, type: 2}
+  - {fileID: 1501174553512714, guid: 35ddb0db4a2908e46928ad59a734de4a, type: 2}
+  numOfEnemiesOnScene: 0
 --- !u!4 &977555386
 Transform:
   m_ObjectHideFlags: 0
