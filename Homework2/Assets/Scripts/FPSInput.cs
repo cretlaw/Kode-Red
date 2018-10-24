@@ -13,7 +13,7 @@ public class FPSInput : MonoBehaviour
     public float gravity = -9.8f;
 
     private CharacterController _charController;
-   
+ 
 
     void Start()
     {

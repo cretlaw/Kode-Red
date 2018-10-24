@@ -4,9 +4,8 @@ using System.Diagnostics;
 using System.Runtime.Remoting.Messaging;
 using UnityEngine;
 
-public class SceneController : MonoBehaviour
-{
-
+public class SceneController : MonoBehaviour {
+    
     [SerializeField] private GameObject[] _enemyPrefabs;
     private GameObject[] _NPCs = new GameObject[10];
     private int _randEnemyIdentifier;
@@ -21,20 +20,18 @@ public class SceneController : MonoBehaviour
     public int numOfEnemiesOnScene = 0;
 
     // Use this for initialization
-    void Start()
-    {
-        IntialSpawn();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    void Start () {
+		IntialSpawn();
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		
+	}
 
     void IntialSpawn()
     {
-
+       
         SpawnInRoom1(5);
         SpawnInRoom2(2);
         SpawnInRoom3(2);
@@ -152,7 +149,7 @@ public class SceneController : MonoBehaviour
         _randomX = Random.Range(-59.4f, 10.5f);
         _randomZ = Random.Range(-12.3f, 13.1f);
 
-        return new Vector3(_randomX, 0, _randomZ);
+        return new Vector3(_randomX,0,_randomZ);
     }
 
     Vector3 GetRoom1Locations()
@@ -177,14 +174,14 @@ public class SceneController : MonoBehaviour
 
         return _enemySpawnPoint;
     }
-
+    
 
     //right Platform to the right of player's starting postion
     public Vector3 GetRoom2RandomLocations()
     {
         _randomX = Random.Range(-47.19f, 11.56f);
         _randomZ = Random.Range(17.25f, 25.3f);
-        return new Vector3(_randomX, 4.16f, _randomZ);
+        return new Vector3(_randomX, 4.16f,_randomZ);
 
     }
 
@@ -194,15 +191,15 @@ public class SceneController : MonoBehaviour
 
         if (_randMutant2Locations == 1)
             return new Vector3(17.16f, 4.16f, 24.61f);
-
-        return new Vector3(-54.13f, 4.16f, 24.97f);
+      
+        return new Vector3(-54.13f,4.16f, 24.97f);
     }
 
     //left Platform to the right of player's starting postion
     public Vector3 GetRoom3RandomLocations()
     {
         _randomX = Random.Range(-46.95f, 10.6f);
-        _randomZ = Random.Range(-22.3f, -15.4f);
+        _randomZ = Random.Range(-22.3f, - 15.4f);
         return new Vector3(_randomX, 4.16f, _randomZ);
 
     }
@@ -217,7 +214,7 @@ public class SceneController : MonoBehaviour
         return new Vector3(-53.15f, 4.16f, -21.6f);
     }
 
-
+    
 
 
 }
