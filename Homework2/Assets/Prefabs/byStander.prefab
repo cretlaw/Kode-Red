@@ -3637,8 +3637,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _range: 15
-  _goal: {fileID: 0}
-  _player: {fileID: 0}
+  _goal: {fileID: 4852148480640274, guid: 72e77ec983d369f43bcf574fe6717ed8, type: 2}
+  _player: {fileID: 4700376675758266, guid: b3263d29d1592584e93f14b513d08aa0, type: 2}
 --- !u!137 &137018744490587674
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
