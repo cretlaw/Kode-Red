@@ -29700,6 +29700,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 56a4149c8339e0747b17082be1453632,
     type: 3}
   m_PrefabInternal: {fileID: 1701288119}
+--- !u!4 &1616259529 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4852148480640274, guid: 72e77ec983d369f43bcf574fe6717ed8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1668299132}
 --- !u!1001 &1621807991
 Prefab:
   m_ObjectHideFlags: 0
@@ -32699,8 +32704,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _range: 15
-  _goal: {fileID: 0}
-  _player: {fileID: 0}
+  _goal: {fileID: 1616259529}
+  _player: {fileID: 2002638269}
 --- !u!1001 &1837223778
 Prefab:
   m_ObjectHideFlags: 0

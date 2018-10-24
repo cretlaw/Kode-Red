@@ -18,7 +18,7 @@ public class BystanderMovement : MonoBehaviour {
         _agent = GetComponent<NavMeshAgent>();
 
         _anim = GetComponent<Animator>();
-        _anim.SetBool("byStanderRunning", true);
+        // _anim.SetBool("byStanderRunning", true);
     }
 
     void Update()
