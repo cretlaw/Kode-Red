@@ -1003,7 +1003,8 @@ GameObject:
   - component: {fileID: 95617912519830402}
   - component: {fileID: 195812874420820530}
   - component: {fileID: 114779503096632580}
-  - component: {fileID: 136253332350194442}
+  - component: {fileID: 114689077986208302}
+  - component: {fileID: 65924846605818892}
   m_Layer: 0
   m_Name: byStander
   m_TagString: Untagged
@@ -3593,6 +3594,18 @@ Transform:
   m_Father: {fileID: 4228762688168156}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &65924846605818892
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1501174553512714}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5716299, y: 1.864907, z: 0.54467183}
+  m_Center: {x: 0.03582561, y: 0.8712939, z: -0.005716592}
 --- !u!95 &95617912519830402
 Animator:
   serializedVersion: 3
@@ -3611,6 +3624,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114689077986208302
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1501174553512714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0531d946c04f74d499ed52276b00f189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114779503096632580
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3625,19 +3649,6 @@ MonoBehaviour:
   _range: 15
   _goal: {fileID: 4852148480640274, guid: 72e77ec983d369f43bcf574fe6717ed8, type: 2}
   _player: {fileID: 4700376675758266, guid: b3263d29d1592584e93f14b513d08aa0, type: 2}
---- !u!136 &136253332350194442
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1501174553512714}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.3230928
-  m_Height: 1.8562365
-  m_Direction: 1
-  m_Center: {x: -7.606769e-17, y: 0.86445796, z: 0.025897205}
 --- !u!137 &137018744490587674
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
