@@ -33,20 +33,34 @@ public class StaticShootingEnemy : MonoBehaviour
     {
 
         _distance = Vector3.Distance(this.transform.position, _player.transform.position);
-        if ((_alive && _distance < _range) || IsAlert)
+        if ((_alive && _distance < _range))
         {
+
             _anim.SetBool("shootM2", true);
             AttackPlayer();
+
+            _m2Controller.AlertOthers(gameObject);
+
         }
-        else if (!_alive || _distance >= _range) 
-            _anim.SetBool("shootM2", false);
+        else if (!_alive || _distance >= _range)
+        {
+            if (IsAlert)
+            {
+                AttackPlayer();
+                _anim.SetBool("shootM2", true);
+            }
+
+            else
+                _anim.SetBool("shootM2", false);
+        }
+
 
     }
 
 
     private void AttackPlayer()
     {
-        _m2Controller.AlertOthers();
+
         _direction = _player.position - this.transform.position;
         this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(_direction), 0.1f);
 
@@ -54,14 +68,14 @@ public class StaticShootingEnemy : MonoBehaviour
 
     }
 
-   
+
 
     public void SetAlive(bool alive)
     {
         _alive = alive;
     }
 
-    
+
 
 
 
