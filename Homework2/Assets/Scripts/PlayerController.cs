@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
 
     public int health;
     public string RoomNumber;
@@ -22,20 +23,13 @@ public class PlayerController : MonoBehaviour {
         }
 
         if (gameObject.transform.position.z < -13.5693f)
-        {
             RoomNumber = "Room3";
-            Debug.Log("Player in Room 2");
-        }
-        else if (gameObject.transform.position.z >= -13.5693f && gameObject.transform.position.z < 15.23492f)
-        {
+        else if (gameObject.transform.position.z >= -13.5693f && gameObject.transform.position.z <= 15.23492f)
             RoomNumber = "Room1";
-            Debug.Log("Player in Room 1");
-        }
         else
-        {
             RoomNumber = "Room2";
-            Debug.Log("Player in Room 3");
-        }
+
+
 
     }
     public void Hurt(int damage)

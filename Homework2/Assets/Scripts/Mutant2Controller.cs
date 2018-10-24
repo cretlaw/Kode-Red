@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public class Mutant2Controller : MonoBehaviour {
+public class Mutant2Controller : MonoBehaviour
+{
 
     [SerializeField] float _alertDistance = 20f;
     private float _distance;
-    
+
 
 
     public void AlertOthers(GameObject callingMutant)
@@ -33,18 +34,18 @@ public class Mutant2Controller : MonoBehaviour {
 
     }
 
-    IEnumerator TimerForAlertness(GameObject [] mutants2)
+    IEnumerator TimerForAlertness(GameObject[] mutants2)
     {
         yield return new WaitForSeconds(10);
 
         foreach (var m2 in mutants2)
         {
-            //_distance = Vector3.Distance(this.transform.position, _player.transform.position);
+            if (m2 != null)
                 m2.GetComponent<StaticShootingEnemy>().IsAlert = false;
         }
     }
-   
-   
+
+
 
     //TODO: Do something similar to mutant and bystander
 }

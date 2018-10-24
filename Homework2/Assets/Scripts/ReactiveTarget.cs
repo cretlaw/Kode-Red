@@ -21,6 +21,10 @@ public class ReactiveTarget : MonoBehaviour
         if ( staticShootingEnemy!= null)
             staticShootingEnemy.SetAlive(false);
 
+        MutantShoot ms = GetComponent<MutantShoot>();
+        if(ms != null)
+            ms.SetAlive(false);
+
         StartCoroutine(Die());
        
     }
@@ -28,13 +32,13 @@ public class ReactiveTarget : MonoBehaviour
     private IEnumerator Die()
     {
         if (this.gameObject.tag == "mutant2")
-        {
             _anim.SetBool("dieM2", true);
 
-            yield return new WaitForSeconds(5);
-
-            Destroy(this.gameObject);
-        }
-
+        else if (this.gameObject.tag == "mutant")
+            _anim.SetBool("isDying", true);
+            
+        
+        yield return new WaitForSeconds(5);
+        Destroy(this.gameObject);
     }
 }
