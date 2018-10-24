@@ -24,6 +24,11 @@ public class ReactiveTarget : MonoBehaviour
         MutantShoot ms = GetComponent<MutantShoot>();
         if(ms != null)
             ms.SetAlive(false);
+        
+
+        BystanderMovement byStander = GetComponent<BystanderMovement>();
+        if(byStander != null)
+            byStander.SetAlive(false);
 
         StartCoroutine(Die());
        
@@ -36,6 +41,9 @@ public class ReactiveTarget : MonoBehaviour
 
         else if (this.gameObject.tag == "mutant")
             _anim.SetBool("isDying", true);
+
+        else
+            _anim.SetBool("byStanderDead", true);
             
         
         yield return new WaitForSeconds(5);

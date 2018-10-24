@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.Remoting.Messaging;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class SceneController : MonoBehaviour {
     
@@ -16,6 +17,8 @@ public class SceneController : MonoBehaviour {
     private Vector3 _enemySpawnPoint;
     private float _randomX;
     private float _randomZ;
+
+    
     //This will be used to control the number of enemies on the scene.
     public int numOfEnemiesOnScene = 0;
 
@@ -54,16 +57,19 @@ public class SceneController : MonoBehaviour {
                     //Spawn a mutant
                     _NPCs[i] = Instantiate(_enemyPrefabs[0]) as GameObject;
                     _NPCs[i].transform.position = GetRoom1RandomLocations();
+                    _NPCs[i].GetComponent<NavMeshAgent>().enabled = true;
                     break;
                 case 2:
                     //Spawn mutant2
                     _NPCs[i] = Instantiate(_enemyPrefabs[1]) as GameObject;
                     _NPCs[i].transform.position = GetRoom1Locations();
+
                     break;
                 default:
                     //if case 1 and 2 don't happen Spawn Passive_Enemy
                     _NPCs[i] = Instantiate(_enemyPrefabs[2]) as GameObject;
                     _NPCs[i].transform.position = GetRoom1RandomLocations();
+                    _NPCs[i].GetComponent<NavMeshAgent>().enabled = true;
                     break;
             }
 
@@ -89,6 +95,7 @@ public class SceneController : MonoBehaviour {
                     //Spawn a mutant
                     _NPCs[i] = Instantiate(_enemyPrefabs[0]) as GameObject;
                     _NPCs[i].transform.position = GetRoom2RandomLocations();
+                    _NPCs[i].GetComponent<NavMeshAgent>().enabled = true;
                     break;
                 case 2:
                     //Spawn mutant2
@@ -99,6 +106,7 @@ public class SceneController : MonoBehaviour {
                     //if case 1 and 2 don't happen Spawn Passive_Enemy
                     _NPCs[i] = Instantiate(_enemyPrefabs[2]) as GameObject;
                     _NPCs[i].transform.position = GetRoom2RandomLocations();
+                    _NPCs[i].GetComponent<NavMeshAgent>().enabled = true;
                     break;
             }
 
@@ -126,6 +134,7 @@ public class SceneController : MonoBehaviour {
                     //Spawn a mutant
                     _NPCs[i] = Instantiate(_enemyPrefabs[0]) as GameObject;
                     _NPCs[i].transform.position = GetRoom3RandomLocations();
+                    _NPCs[i].GetComponent<NavMeshAgent>().enabled = true;
                     break;
                 case 2:
                     //Spawn mutant2
@@ -136,6 +145,7 @@ public class SceneController : MonoBehaviour {
                     //if case 1 and 2 don't happen Spawn Passive_Enemy
                     _NPCs[i] = Instantiate(_enemyPrefabs[2]) as GameObject;
                     _NPCs[i].transform.position = GetRoom3RandomLocations();
+                    _NPCs[i].GetComponent<NavMeshAgent>().enabled = true;
                     break;
             }
 

@@ -33,4 +33,10 @@ public class BystanderMovement : MonoBehaviour {
             _anim.SetBool("byStanderRunning", false);
 
     }
+
+
+    public void SetAlive(bool alive)
+    {
+        _alive = alive;
+    }
 }
