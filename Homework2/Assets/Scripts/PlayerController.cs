@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour {
     private void StopEnemyShooting()
     {
         this.GetComponent<FPSInput>().enabled = false;
-        GameObject.Find("Player View Camera").GetComponent<WeaponsController>().enabled = false;
+        GameObject.Find("Player View Camera").GetComponent<PlayerWeaponsController>().enabled = false;
 
 
 
