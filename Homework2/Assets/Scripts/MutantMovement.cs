@@ -6,16 +6,17 @@ public class MutantMovement : MonoBehaviour {
 
 	public Transform player;
 	static Animator anim;
+    public int RoomNumber;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		anim = GetComponent<Animator>();
 	    player = GameObject.Find("Player").transform;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		MutantShoot _MS = GetComponent<MutantShoot>();
+		
 		Vector3 direction = player.position - this.transform.position;
 		float angle = Vector3.Angle(direction, this.transform.forward);
 		if(Vector3.Distance(player.position, this.transform.position)< 10 && angle < 50){
@@ -51,5 +52,10 @@ public class MutantMovement : MonoBehaviour {
 			anim.SetBool("isAttacking", false);
 			anim.SetBool("isRunning", false);
 		}
+
+	    
 	}
+
+
+   
 }

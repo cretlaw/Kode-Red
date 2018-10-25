@@ -11,6 +11,7 @@ public class BystanderMovement : MonoBehaviour {
     private bool _alive;
     private float _distance;
     private NavMeshAgent _agent;
+    
     void Start () 
     {
         _alive = true; 
@@ -23,6 +24,8 @@ public class BystanderMovement : MonoBehaviour {
 
     void Update()
     {
+        
+
         _distance = Vector3.Distance(this.transform.position, _player.transform.position);
         if ((_alive && _distance < _range))
         {
@@ -39,4 +42,6 @@ public class BystanderMovement : MonoBehaviour {
     {
         _alive = alive;
     }
+
+   
 }

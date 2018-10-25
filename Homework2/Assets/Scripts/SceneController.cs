@@ -220,7 +220,7 @@ public class SceneController : MonoBehaviour
         }
     }
 
-    Vector3 GetRoom1RandomLocations()
+    public Vector3 GetRoom1RandomLocations()
     {
         _randomX = Random.Range(-59.4f, 10.5f);
         _randomZ = Random.Range(-12.3f, 13.1f);
@@ -261,7 +261,7 @@ public class SceneController : MonoBehaviour
 
     }
 
-    public Vector3 GetRoom2Locations()
+    private Vector3 GetRoom2Locations()
     {
         _randMutant2Locations = Random.Range(1, 3);
 
@@ -280,7 +280,7 @@ public class SceneController : MonoBehaviour
 
     }
 
-    public Vector3 GetRoom3Locations()
+    private Vector3 GetRoom3Locations()
     {
         _randMutant2Locations = Random.Range(1, 3);
 

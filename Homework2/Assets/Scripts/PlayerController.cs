@@ -70,6 +70,7 @@ public class PlayerController : MonoBehaviour
                 m.GetComponent<MutantMovement>().enabled = false;
                 m.GetComponentInChildren<MutantShoot>().enabled = false;
                 m.GetComponent<WanderingAI>().enabled = true;
+                m.GetComponent<ReactiveTarget>().enabled = false;
             }
         }
 
@@ -80,6 +81,7 @@ public class PlayerController : MonoBehaviour
             foreach (var m2 in mutants2)
             {
                 m2.GetComponent<StaticShootingEnemy>().enabled = false;
+                m2.GetComponent<ReactiveTarget>().enabled = false;
                 _anim = m2.GetComponent<Animator>();
                 _anim.SetBool("shootM2", false);
                 _anim.SetBool("playerDied", true);
@@ -95,6 +97,7 @@ public class PlayerController : MonoBehaviour
             foreach (var b in byStanders)
             {
                 b.GetComponent<BystanderMovement>().enabled = false;
+                b.GetComponent<ReactiveTarget>().enabled = false;
                 b.GetComponent<WanderingAI>().enabled = true;
             }
         }

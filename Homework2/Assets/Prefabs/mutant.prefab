@@ -891,7 +891,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1055829422943824}
   m_LocalRotation: {x: 0, y: -0.99999315, z: 0, w: -0.0036989164}
-  m_LocalPosition: {x: 13.110888, y: 0, z: -0.11999671}
+  m_LocalPosition: {x: 16.99, y: 0, z: 11.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4951922538127100}
@@ -1160,7 +1160,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1.9677801, z: 1}
-  m_Center: {x: 0, y: 0.9619403, z: -0}
+  m_Center: {x: 0, y: 0, z: -0}
 --- !u!95 &95185191426715940
 Animator:
   serializedVersion: 3
@@ -1191,6 +1191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  RoomNumber: 0
 --- !u!114 &114290112942833018
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1215,8 +1216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf0f822e8b2df1b42aab3c3c91711a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  obstacleRange: 5
+  target: {fileID: 0}
 --- !u!114 &114789940612572612
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1320,7 +1320,7 @@ NavMeshAgent:
   m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 1.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
