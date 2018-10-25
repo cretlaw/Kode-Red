@@ -5,7 +5,7 @@ using UnityEngine;
 public class WanderingAI : MonoBehaviour
 {
 
-    /*public float droneDescentSpeed = 1.5f;*/
+    
     public float speed = 1.5f;
 
     public float obstacleRange = 5.0f;

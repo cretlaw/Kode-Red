@@ -32,6 +32,7 @@ public class StaticShootingEnemy : MonoBehaviour
     void Update()
     {
 
+
         _distance = Vector3.Distance(this.transform.position, _player.transform.position);
         if ((_alive && _distance < _range))
         {
@@ -64,6 +65,9 @@ public class StaticShootingEnemy : MonoBehaviour
         _direction = _player.position - this.transform.position;
         this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(_direction), 0.1f);
 
+        float rotationY = transform.localEulerAngles.y;
+
+        transform.localEulerAngles = new Vector3(0, rotationY, 0);
         _gun.ShootWeapon();
 
     }
