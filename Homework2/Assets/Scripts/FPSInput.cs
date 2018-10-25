@@ -13,11 +13,13 @@ public class FPSInput : MonoBehaviour
     public float gravity = -9.8f;
 
     private CharacterController _charController;
+    private SceneController _sceneController;
  
 
     void Start()
     {
         _charController = GetComponent<CharacterController>();
+        _sceneController = GameObject.Find("Controller").GetComponent<SceneController>();
     }
     void Update()
     {
@@ -33,6 +35,9 @@ public class FPSInput : MonoBehaviour
         movement = transform.TransformDirection(movement);
         _charController.Move(movement);
 
+
+        if(Input.GetKeyDown(KeyCode.R))
+            _sceneController.Reset();
 
 
     }

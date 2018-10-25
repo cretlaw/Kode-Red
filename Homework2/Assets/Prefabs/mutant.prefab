@@ -54,6 +54,7 @@ GameObject:
   - component: {fileID: 114286858839683964}
   - component: {fileID: 195035492424810614}
   - component: {fileID: 114789940612572612}
+  - component: {fileID: 114337224375177848}
   m_Layer: 0
   m_Name: mutant
   m_TagString: mutant
@@ -1203,6 +1204,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireballPrefab: {fileID: 1956094904363052, guid: 1f9ef580ea5794f8c9de10a4c5fab2d6,
     type: 2}
+--- !u!114 &114337224375177848
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1055829422943824}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf0f822e8b2df1b42aab3c3c91711a66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  obstacleRange: 5
 --- !u!114 &114789940612572612
 MonoBehaviour:
   m_ObjectHideFlags: 1

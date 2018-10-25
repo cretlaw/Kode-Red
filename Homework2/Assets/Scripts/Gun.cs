@@ -6,12 +6,12 @@ public class Gun : MonoBehaviour
 {
 
     private ParticleSystem _muzzleFlash;
-     private Transform _player;
+     private GameObject _player;
 
     // Use this for initialization
     void Start()
     {
-        _player = GameObject.Find("Player").transform;
+        _player = GameObject.Find("Player");
         
         _muzzleFlash = GetComponentInChildren<ParticleSystem>();
     }
@@ -26,14 +26,14 @@ public class Gun : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
 
-            transform.LookAt(_player);
+            transform.LookAt(_player.transform);
             GameObject hitObject = hit.transform.gameObject;
             if (hitObject.GetComponent<PlayerController>())
             {
-                Debug.Log("Player HIT!");
+            
                 _muzzleFlash.Play();
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.green);
-                
+                _player.GetComponent<PlayerController>().Hurt(1);
 
             }
             else

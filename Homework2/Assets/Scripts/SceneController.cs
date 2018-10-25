@@ -1,9 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Runtime.Remoting.Messaging;
 using UnityEngine;
-using UnityEngine.AI;
+
 
 public class SceneController : MonoBehaviour
 {
@@ -32,6 +30,49 @@ public class SceneController : MonoBehaviour
         _player = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
+    public void Reset()
+    {
+
+        //Reset Player intial position and rotation
+        GameObject player = GameObject.Find("Player");
+        player.transform.position = new Vector3(18.41f, 1f, -1.33f);
+        player.transform.rotation = Quaternion.Euler(0f, -60f, 0f);
+
+        //Reset Player's health and show it in console
+        PlayerController playerCharacter = player.GetComponent<PlayerController>();
+        playerCharacter.health = 100;
+        Debug.Log("Health: " + playerCharacter.health);
+
+        GameObject[] byStanders = GameObject.FindGameObjectsWithTag("byStander");
+        if (byStanders != null && byStanders.Length != 0)
+        {
+            foreach (var b in byStanders)
+            {
+                Destroy(b);
+            }
+        }
+
+        GameObject[] mutants = GameObject.FindGameObjectsWithTag("mutant");
+        if (mutants != null && mutants.Length != 0)
+        {
+            foreach (var m in mutants)
+            {
+                Destroy(m);
+            }
+        }
+
+        GameObject[] mutants2 = GameObject.FindGameObjectsWithTag("mutant2");
+        if (mutants2 != null && mutants2.Length != 0)
+        {
+            foreach (var m2 in mutants2)
+            {
+                Destroy(m2);
+            }
+        }
+
+        numOfEnemiesOnScene = 0;
+        IntialSpawn();
+    }
 
     void IntialSpawn()
     {
@@ -41,12 +82,14 @@ public class SceneController : MonoBehaviour
         SpawnInRoom3(2);
     }
 
+
+
     public void ReSpawn()
     {
         --numOfEnemiesOnScene;
 
-        //random number of enemies we would like to create making sure that there is not a point where there is always 
-        //10 enemies ont the scene
+        //random number of enemies we would like to create making sure that there is not a point
+        //where there is always 10 enemies ont the scene or more than 10.
         _randNumOfEnemies = Random.Range(1, 4);
         _randNumOfEnemies = CheckMaxEnemies(_randNumOfEnemies);
 
@@ -80,7 +123,7 @@ public class SceneController : MonoBehaviour
                     //Spawn a mutant
                     _NPCs[i] = Instantiate(_enemyPrefabs[0]) as GameObject;
                     _NPCs[i].transform.position = GetRoom1RandomLocations();
-                    _NPCs[i].GetComponent<NavMeshAgent>().enabled = true;
+                    _NPCs[i].GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
                     break;
                 case 2:
                     //Spawn mutant2
@@ -92,7 +135,7 @@ public class SceneController : MonoBehaviour
                     //if case 1 and 2 don't happen Spawn Passive_Enemy
                     _NPCs[i] = Instantiate(_enemyPrefabs[2]) as GameObject;
                     _NPCs[i].transform.position = GetRoom1RandomLocations();
-                    _NPCs[i].GetComponent<NavMeshAgent>().enabled = true;
+                    _NPCs[i].GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
                     break;
             }
 
@@ -118,7 +161,7 @@ public class SceneController : MonoBehaviour
                     //Spawn a mutant
                     _NPCs[i] = Instantiate(_enemyPrefabs[0]) as GameObject;
                     _NPCs[i].transform.position = GetRoom2RandomLocations();
-                    _NPCs[i].GetComponent<NavMeshAgent>().enabled = true;
+                    _NPCs[i].GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
                     break;
                 case 2:
                     //Spawn mutant2
@@ -129,7 +172,7 @@ public class SceneController : MonoBehaviour
                     //if case 1 and 2 don't happen Spawn Passive_Enemy
                     _NPCs[i] = Instantiate(_enemyPrefabs[2]) as GameObject;
                     _NPCs[i].transform.position = GetRoom2RandomLocations();
-                    _NPCs[i].GetComponent<NavMeshAgent>().enabled = true;
+                    _NPCs[i].GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
                     break;
             }
 
@@ -157,7 +200,7 @@ public class SceneController : MonoBehaviour
                     //Spawn a mutant
                     _NPCs[i] = Instantiate(_enemyPrefabs[0]) as GameObject;
                     _NPCs[i].transform.position = GetRoom3RandomLocations();
-                    _NPCs[i].GetComponent<NavMeshAgent>().enabled = true;
+                    _NPCs[i].GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
                     break;
                 case 2:
                     //Spawn mutant2
@@ -168,7 +211,7 @@ public class SceneController : MonoBehaviour
                     //if case 1 and 2 don't happen Spawn Passive_Enemy
                     _NPCs[i] = Instantiate(_enemyPrefabs[2]) as GameObject;
                     _NPCs[i].transform.position = GetRoom3RandomLocations();
-                    _NPCs[i].GetComponent<NavMeshAgent>().enabled = true;
+                    _NPCs[i].GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
                     break;
             }
 

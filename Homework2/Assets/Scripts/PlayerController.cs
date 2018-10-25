@@ -7,10 +7,13 @@ public class PlayerController : MonoBehaviour
 
     public int health;
     public int RoomNumber;
+    private Animator _anim;
+    private SceneController _sceneController;
 
     void Start()
     {
         health = 100;
+        _sceneController = GameObject.Find("Controller").GetComponent<SceneController>();
     }
 
     void Update()
@@ -18,8 +21,12 @@ public class PlayerController : MonoBehaviour
         //if player is killed stop enemy and player from shooting and stop enemy from moving around only rotate.
         if (health <= 0)
         {
-            //TODO:Figure out how to destroy any bullets that are on the air when health reaches 0 
+             
             StopEnemyShooting();
+
+            if(Input.GetKeyDown(KeyCode.R))
+                _sceneController.Reset();
+
         }
 
         if (gameObject.transform.position.z < -13.5693f)
@@ -48,8 +55,49 @@ public class PlayerController : MonoBehaviour
 
     private void StopEnemyShooting()
     {
+        //Prevents the player from moving and shooting only moving camera
         this.GetComponent<FPSInput>().enabled = false;
-        GameObject.Find("Player View Camera").GetComponent<PlayerWeaponsController>().enabled = false;
+        GameObject.Find("Weapons").GetComponent<PlayerWeaponsController>().enabled = false;
+
+
+        //Below is the code to stop all enemy fire and the walking enemies will wander around.
+        GameObject[] mutants = GameObject.FindGameObjectsWithTag("mutant");
+
+        if (mutants != null && mutants.Length != 0)
+        {
+            foreach (var m in mutants)
+            {
+                m.GetComponent<MutantMovement>().enabled = false;
+                m.GetComponentInChildren<MutantShoot>().enabled = false;
+                m.GetComponent<WanderingAI>().enabled = true;
+            }
+        }
+
+        GameObject[] mutants2 = GameObject.FindGameObjectsWithTag("mutant2");
+
+        if (mutants2 != null && mutants2.Length != 0)
+        {
+            foreach (var m2 in mutants2)
+            {
+                m2.GetComponent<StaticShootingEnemy>().enabled = false;
+                _anim = m2.GetComponent<Animator>();
+                _anim.SetBool("shootM2", false);
+                _anim.SetBool("playerDied", true);
+
+            }
+        }
+
+        GameObject[] byStanders = GameObject.FindGameObjectsWithTag("byStander");
+
+        if (byStanders != null && byStanders.Length !=  0)
+        {
+
+            foreach (var b in byStanders)
+            {
+                b.GetComponent<BystanderMovement>().enabled = false;
+                b.GetComponent<WanderingAI>().enabled = true;
+            }
+        }
 
 
 
