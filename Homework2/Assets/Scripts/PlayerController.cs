@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
 
     public int health;
-    public string RoomNumber;
+    public int RoomNumber;
 
     void Start()
     {
@@ -23,11 +23,11 @@ public class PlayerController : MonoBehaviour
         }
 
         if (gameObject.transform.position.z < -13.5693f)
-            RoomNumber = "Room3";
+            RoomNumber = 3;
         else if (gameObject.transform.position.z >= -13.5693f && gameObject.transform.position.z <= 15.23492f)
-            RoomNumber = "Room1";
+            RoomNumber = 1;
         else
-            RoomNumber = "Room2";
+            RoomNumber = 2;
 
 
 

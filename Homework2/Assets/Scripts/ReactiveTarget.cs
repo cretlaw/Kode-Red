@@ -5,18 +5,21 @@ using System.Collections;
 public class ReactiveTarget : MonoBehaviour
 {
     private Animator _anim;
+    private SceneController _sceneController;
     
 
 
     void Start()
     {
         _anim = GetComponent<Animator>();
-       
+        _sceneController = GameObject.Find("Controller").GetComponent<SceneController>();
+
+
     }
+
+
     public void ReactToHit()
     {
-        //TODO: I added box collider on enemis so that they may react to being hit by player.
-        //TODO: We may need to change this in the feature to work with navmesh agent.
         StaticShootingEnemy staticShootingEnemy = GetComponent<StaticShootingEnemy>();
         if ( staticShootingEnemy!= null)
             staticShootingEnemy.SetAlive(false);
@@ -31,6 +34,8 @@ public class ReactiveTarget : MonoBehaviour
             byStander.SetAlive(false);
 
         StartCoroutine(Die());
+
+        _sceneController.ReSpawn();
        
     }
 
