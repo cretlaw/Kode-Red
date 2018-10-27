@@ -7,7 +7,7 @@ using System.Collections;
 
 public class BystanderMovement : MonoBehaviour
 {
-    [SerializeField] private float _range = 15f;
+    [SerializeField] private float _range = 12f;
     private Vector3 _destination;
     private NavMeshAgent _agent;
     private Transform _player;
@@ -16,9 +16,12 @@ public class BystanderMovement : MonoBehaviour
     private bool _running;
     private bool _lookedAtPlayer;
     private float _distance;
-    private GameObject _ally;
+    private GameObject _closestAlly;
+    private GameObject _closestMutant;
+    private GameObject _closestMutant2;
     private float _closesAllyDistance;
     private float _rotationY;
+    public bool IsAlert;
 
     void Start()
     {
@@ -34,29 +37,31 @@ public class BystanderMovement : MonoBehaviour
 
 
         _distance = Vector3.Distance(this.transform.position, _player.transform.position);
-        if (_alive && _distance < _range || _running)
+        if (_alive && _distance < _range || _running || IsAlert)
         {
-            
+
 
             if (!_lookedAtPlayer)
             {
                 transform.LookAt(_player);
                 _rotationY = transform.localEulerAngles.y;
                 transform.localEulerAngles = new Vector3(0, _rotationY, 0);
+
             }
 
             FindClosestAlly();
-            if (_ally != null)
+            if (_closestAlly != null)
             {
-                
-                _agent.destination = _ally.transform.position;
+
+                _agent.destination = _closestAlly.transform.position;
                 _anim.SetBool("byStanderRunning", true);
                 _lookedAtPlayer = true;
             }
-            else
+            else 
             {
                 GetComponent<BystanderMovement>().enabled = false;
                 GetComponent<WanderingAI>().enabled = true;
+
             }
 
 
@@ -71,19 +76,36 @@ public class BystanderMovement : MonoBehaviour
                 transform.localEulerAngles = new Vector3(0, _rotationY, 0);
             }
         }
-        /*else if (!_alive || _distance >= _range)
-        {
-         
-                _anim.SetBool("byStanderRunning", false);
-        }*/
+
     }
 
-    IEnumerator RunToAlly()
-    {
-        yield return new WaitForSeconds(1);
-    }
+
+
+
+
     private void FindClosestAlly()
     {
+
+
+        float mDistance = GetClosestMutant();
+        float m2Distance = GetClosestMutant2();
+
+        if (_closestMutant != null && _closestMutant != null)
+        {
+            if (mDistance < m2Distance)
+                _closestAlly = _closestMutant;
+            else
+                _closestAlly = _closestMutant2;
+        }
+        else if (_closestMutant != null)
+            _closestAlly = _closestMutant;
+        else
+            _closestAlly = _closestMutant2;
+    }
+
+    private float GetClosestMutant()
+    {
+       
 
         GameObject[] mutants = GameObject.FindGameObjectsWithTag("mutant");
         if (mutants != null && mutants.Length != 0)
@@ -97,7 +119,7 @@ public class BystanderMovement : MonoBehaviour
                 if (_distance <= _closesAllyDistance)
                 {
                     _closesAllyDistance = _distance;
-                    _ally = m;
+                    _closestMutant = m;
 
                 }
 
@@ -105,17 +127,30 @@ public class BystanderMovement : MonoBehaviour
 
         }
 
+        return _closesAllyDistance;
+
+    }
+
+    private float GetClosestMutant2()
+    {
+       
+
         GameObject[] mutant2s = GameObject.FindGameObjectsWithTag("mutant2");
         if (mutant2s != null && mutant2s.Length != 0)
         {
+
+            _closesAllyDistance = Vector3.Distance(gameObject.transform.position, mutant2s[0].transform.position);
+
+
             foreach (var m2 in mutant2s)
             {
+
                 _distance = Vector3.Distance(gameObject.transform.position, m2.transform.position);
 
                 if (_distance <= _closesAllyDistance)
                 {
                     _closesAllyDistance = _distance;
-                    _ally = m2;
+                    _closestMutant2 = m2;
 
                 }
 
@@ -123,9 +158,8 @@ public class BystanderMovement : MonoBehaviour
 
         }
 
-      
+        return _closesAllyDistance;
     }
-
 
     public void SetAlive(bool alive)
     {

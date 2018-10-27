@@ -29,12 +29,28 @@ public class Mutant2Controller : MonoBehaviour
 
         }
 
-        StartCoroutine(TimerForAlertness(mutants2));
+
+        GameObject[] byStanders = GameObject.FindGameObjectsWithTag("byStander");
+
+        if (byStanders != null && byStanders.Length != 0)
+        {
+            foreach (var b in byStanders)
+            {
+                _distance = Vector3.Distance(b.gameObject.transform.position, callingMutant.transform.position);
+                if (_distance < _alertDistance)
+                    b.GetComponent<BystanderMovement>().IsAlert = true;
+            }
+
+
+        }
+
+
+        StartCoroutine(TimerForAlertness(mutants2, byStanders));
 
 
     }
 
-    IEnumerator TimerForAlertness(GameObject[] mutants2)
+    IEnumerator TimerForAlertness(GameObject[] mutants2, GameObject[] byStanders)
     {
         yield return new WaitForSeconds(10);
 
@@ -42,6 +58,12 @@ public class Mutant2Controller : MonoBehaviour
         {
             if (m2 != null)
                 m2.GetComponent<StaticShootingEnemy>().IsAlert = false;
+        }
+
+        foreach (var b in byStanders)
+        {
+            if (b != null)
+                b.GetComponent<BystanderMovement>().IsAlert = false;
         }
     }
 

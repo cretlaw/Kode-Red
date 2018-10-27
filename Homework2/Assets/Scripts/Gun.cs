@@ -37,7 +37,7 @@ public class Gun : MonoBehaviour
                 {
                     _muzzleFlash.Play();
                     
-                    _player.GetComponent<PlayerController>().Hurt(5);
+                    _player.GetComponent<PlayerController>().Hurt(3);
                     _shootOffSet = 0;
                 }
 
