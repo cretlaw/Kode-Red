@@ -22,8 +22,6 @@ public class Gun : MonoBehaviour
     public void ShootWeapon()
     {
 
-        
-
         Ray ray = new Ray(this.transform.position, this.transform.forward);
         RaycastHit hit;
         if (Physics.SphereCast(ray,0.75f, out hit))
@@ -39,23 +37,17 @@ public class Gun : MonoBehaviour
                 {
                     _muzzleFlash.Play();
                     
-                    _player.GetComponent<PlayerController>().Hurt(10);
+                    _player.GetComponent<PlayerController>().Hurt(5);
                     _shootOffSet = 0;
                 }
 
                 _shootOffSet++;
             }
             else
-            {
-                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
                 _muzzleFlash.Stop();
-            }
+            
         }
-        else
-        {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
-            Debug.Log("Did not Hit");
-        }
+        
 
     }
    

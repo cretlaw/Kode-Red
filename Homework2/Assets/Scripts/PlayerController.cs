@@ -9,11 +9,15 @@ public class PlayerController : MonoBehaviour
     public int RoomNumber;
     private Animator _anim;
     private SceneController _sceneController;
+    private PlayerWeaponsController _playerWeaponsController;
+    private FPSInput _fpsInput;
 
     void Start()
     {
         health = 100;
         _sceneController = GameObject.Find("Controller").GetComponent<SceneController>();
+        _fpsInput = GetComponent<FPSInput>();
+        _playerWeaponsController = GameObject.Find("Weapons").GetComponent<PlayerWeaponsController>();
     }
 
     void Update()
@@ -21,12 +25,17 @@ public class PlayerController : MonoBehaviour
         //if player is killed stop enemy and player from shooting and stop enemy from moving around only rotate.
         if (health <= 0)
         {
-             
+            //Prevents the player from moving and shooting only moving camera
+            _fpsInput.enabled = false;
+            _playerWeaponsController.enabled = false;
             StopEnemyShooting();
 
-            if(Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.R))
+            {
                 _sceneController.Reset();
-
+                _fpsInput.enabled = true;
+                _playerWeaponsController.enabled = true;
+            }
         }
 
         if (gameObject.transform.position.z < -13.5693f)
@@ -55,11 +64,7 @@ public class PlayerController : MonoBehaviour
 
     private void StopEnemyShooting()
     {
-        //Prevents the player from moving and shooting only moving camera
-        this.GetComponent<FPSInput>().enabled = false;
-        GameObject.Find("Weapons").GetComponent<PlayerWeaponsController>().enabled = false;
-
-
+       
         //Below is the code to stop all enemy fire and the walking enemies will wander around.
         GameObject[] mutants = GameObject.FindGameObjectsWithTag("mutant");
 

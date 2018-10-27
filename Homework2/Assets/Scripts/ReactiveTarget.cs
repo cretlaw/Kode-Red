@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.AI;
 
 
 public class ReactiveTarget : MonoBehaviour
@@ -48,10 +49,14 @@ public class ReactiveTarget : MonoBehaviour
             _anim.SetBool("isDying", true);
 
         else
+        {
+            GetComponent<BystanderMovement>().enabled = false;
+            GetComponent<WanderingAI>().enabled = false;
+            gameObject.GetComponent<NavMeshAgent>().isStopped = true;
             _anim.SetBool("byStanderDead", true);
-            
-        
-        yield return new WaitForSeconds(5);
+        }
+
+        yield return new WaitForSeconds(3);
         Destroy(this.gameObject);
     }
 }

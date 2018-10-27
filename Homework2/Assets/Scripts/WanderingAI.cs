@@ -7,14 +7,15 @@ public class WanderingAI : MonoBehaviour
 {
 
     
-    private Vector3 destination;
-    private NavMeshAgent agent;
-    private int RoomNumber;
+    private Vector3 _destination;
+    private NavMeshAgent _agent;
+    private int _roomNumber;
     private float _randX;
     private float _randZ;
 
     private Animator _anim;
     private SceneController _sceneController;
+   
 
     //Todo: Figure out why bystander moves before animation starts
     void Start()
@@ -31,15 +32,13 @@ public class WanderingAI : MonoBehaviour
         {
             _anim.SetBool("byStanderRunning", true);
 
-            StartCoroutine(WaitForAnimations());
+           
         }
-
-        // Cache agent component and destination
-        agent = GetComponent<NavMeshAgent>();
-        RoomNumber = GetRoomNumber();
-        agent.destination = WalkTo();
-
-
+        // Cache _agent component and _destination
+        _agent = GetComponent<NavMeshAgent>();
+        _roomNumber = GetRoomNumber();
+        _agent.destination = WalkTo();
+       
     }
 
 
@@ -49,41 +48,41 @@ public class WanderingAI : MonoBehaviour
     {
 
         if (pathComplete())
-            agent.destination = WalkTo();
+            _agent.destination = WalkTo();
 
     }
 
 
     private Vector3 WalkTo()
     {
-        if (RoomNumber == 1)
-            destination = _sceneController.GetRoom1RandomLocations();
-        else if (RoomNumber == 2)
-            destination = _sceneController.GetRoom2RandomLocations();
+        if (_roomNumber == 1)
+            _destination = _sceneController.GetRoom1RandomLocations();
+        else if (_roomNumber == 2)
+            _destination = _sceneController.GetRoom2RandomLocations();
         else
-            destination = _sceneController.GetRoom3RandomLocations();
+            _destination = _sceneController.GetRoom3RandomLocations();
 
-        return destination;
+        return _destination;
     }
 
     private int GetRoomNumber()
     {
         if (gameObject.transform.position.z < -13.5693f)
-            RoomNumber = 3;
+            _roomNumber = 3;
         else if (gameObject.transform.position.z >= -13.5693f && gameObject.transform.position.z <= 15.23492f)
-            RoomNumber = 1;
+            _roomNumber = 1;
         else
-            RoomNumber = 2;
+            _roomNumber = 2;
 
-        return RoomNumber;
+        return _roomNumber;
     }
 
 
     protected bool pathComplete()
     {
-        if (Vector3.Distance(agent.destination, agent.transform.position) <= agent.stoppingDistance)
+        if (Vector3.Distance(_agent.destination, _agent.transform.position) <= _agent.stoppingDistance)
         {
-            if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
+            if (!_agent.hasPath || _agent.velocity.sqrMagnitude == 0f)
             {
                 return true;
             }
@@ -93,12 +92,5 @@ public class WanderingAI : MonoBehaviour
     }
 
 
-    IEnumerator WaitForAnimations()
-    {
-        yield return new WaitForSeconds(10f);
-        // Cache agent component and destination
-        agent = GetComponent<NavMeshAgent>();
-        RoomNumber = GetRoomNumber();
-        agent.destination = WalkTo();
-    }
+   
 }
