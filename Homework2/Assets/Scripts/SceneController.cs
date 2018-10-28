@@ -18,6 +18,7 @@ public class SceneController : MonoBehaviour
     private float _randomZ;
 
     private PlayerController _player;
+    private UIManager _uiManager;
 
 
     //This will be used to control the number of enemies on the scene.
@@ -28,11 +29,14 @@ public class SceneController : MonoBehaviour
     {
         IntialSpawn();
         _player = GameObject.Find("Player").GetComponent<PlayerController>();
+        _uiManager = GameObject.Find("Controller").GetComponent<UIManager>();
     }
 
+
+    
     public void Reset()
     {
-
+        _uiManager.NumOfKills = 15;
         //Reset Player intial position and rotation
         GameObject player = GameObject.Find("Player");
         player.transform.position = new Vector3(18.41f, 1f, -1.33f);
@@ -41,7 +45,7 @@ public class SceneController : MonoBehaviour
         //Reset Player's health and show it in console
         PlayerController playerCharacter = player.GetComponent<PlayerController>();
         playerCharacter.health = 100;
-        Debug.Log("Health: " + playerCharacter.health);
+        
 
         GameObject[] byStanders = GameObject.FindGameObjectsWithTag("byStander");
         if (byStanders != null && byStanders.Length != 0)
@@ -77,9 +81,9 @@ public class SceneController : MonoBehaviour
     void IntialSpawn()
     {
 
-        SpawnInRoom1(4);
-        SpawnInRoom2(2);
-        SpawnInRoom3(2);
+        SpawnInRoom1(3);
+        SpawnInRoom2(1);
+        SpawnInRoom3(1);
     }
 
 

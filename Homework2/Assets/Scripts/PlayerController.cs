@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,19 +13,36 @@ public class PlayerController : MonoBehaviour
     private PlayerWeaponsController _playerWeaponsController;
     private FPSInput _fpsInput;
 
+
+    private GameObject _gameOver;
+    private SimpleHealthBar _healthBar;
+    
+
     void Start()
     {
         health = 100;
         _sceneController = GameObject.Find("Controller").GetComponent<SceneController>();
+        
+
         _fpsInput = GetComponent<FPSInput>();
         _playerWeaponsController = GameObject.Find("Weapons").GetComponent<PlayerWeaponsController>();
+
+
+        _gameOver = GameObject.Find("GameOver");
+        _healthBar = GameObject.Find("Health").GetComponent<SimpleHealthBar>();
+        
+
+
     }
 
     void Update()
     {
+        _healthBar.UpdateBar(health, 100);
         //if player is killed stop enemy and player from shooting and stop enemy from moving around only rotate.
         if (health <= 0)
         {
+
+            _gameOver.GetComponent<Image>().enabled = true;
             //Prevents the player from moving and shooting only moving camera
             _fpsInput.enabled = false;
             _playerWeaponsController.enabled = false;
@@ -32,9 +50,12 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.R))
             {
+                
+                _gameOver.GetComponent<Image>().enabled = false;
                 _sceneController.Reset();
                 _fpsInput.enabled = true;
                 _playerWeaponsController.enabled = true;
+                
             }
         }
 
@@ -51,7 +72,8 @@ public class PlayerController : MonoBehaviour
     public void Hurt(int damage)
     {
         health -= damage;
-        Debug.Log("Health: " + health);
+        
+        _healthBar.UpdateBar(health, 100);
 
 
     }
@@ -62,9 +84,9 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Health: " + health);
     }
 
-    private void StopEnemyShooting()
+    public void StopEnemyShooting()
     {
-       
+
         //Below is the code to stop all enemy fire and the walking enemies will wander around.
         GameObject[] mutants = GameObject.FindGameObjectsWithTag("mutant");
 
@@ -96,7 +118,7 @@ public class PlayerController : MonoBehaviour
 
         GameObject[] byStanders = GameObject.FindGameObjectsWithTag("byStander");
 
-        if (byStanders != null && byStanders.Length !=  0)
+        if (byStanders != null && byStanders.Length != 0)
         {
 
             foreach (var b in byStanders)

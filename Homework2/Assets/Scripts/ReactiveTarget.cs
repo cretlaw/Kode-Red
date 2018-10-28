@@ -7,6 +7,8 @@ public class ReactiveTarget : MonoBehaviour
 {
     private Animator _anim;
     private SceneController _sceneController;
+    private UIManager _uiManager;
+    
     
 
 
@@ -14,7 +16,7 @@ public class ReactiveTarget : MonoBehaviour
     {
         _anim = GetComponent<Animator>();
         _sceneController = GameObject.Find("Controller").GetComponent<SceneController>();
-
+        _uiManager = GameObject.Find("Controller").GetComponent<UIManager>();
 
     }
 
@@ -33,6 +35,9 @@ public class ReactiveTarget : MonoBehaviour
         BystanderMovement byStander = GetComponent<BystanderMovement>();
         if(byStander != null)
             byStander.SetAlive(false);
+
+       
+        _uiManager.UpdateKillsBar();
 
         StartCoroutine(Die());
 
@@ -54,6 +59,8 @@ public class ReactiveTarget : MonoBehaviour
             GetComponent<WanderingAI>().enabled = false;
             gameObject.GetComponent<NavMeshAgent>().isStopped = true;
             _anim.SetBool("byStanderDead", true);
+           
+            
         }
 
         yield return new WaitForSeconds(3);
