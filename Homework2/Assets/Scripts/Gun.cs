@@ -8,6 +8,8 @@ public class Gun : MonoBehaviour
     private ParticleSystem _muzzleFlash;
     private GameObject _player;
     private int _shootOffSet = 0;
+    private AudioSource _gunShot;
+    
 
     // Use this for initialization
     void Start()
@@ -15,6 +17,7 @@ public class Gun : MonoBehaviour
         _player = GameObject.Find("Player");
         
         _muzzleFlash = GetComponentInChildren<ParticleSystem>();
+        _gunShot = GetComponent<AudioSource>();
     }
 
 
@@ -36,7 +39,7 @@ public class Gun : MonoBehaviour
                 if (_shootOffSet == 60)
                 {
                     _muzzleFlash.Play();
-                    
+                    _gunShot.Play();
                     _player.GetComponent<PlayerController>().Hurt(3);
                     _shootOffSet = 0;
                 }

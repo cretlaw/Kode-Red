@@ -22,6 +22,8 @@ public class BystanderMovement : MonoBehaviour
     private float _closesAllyDistance;
     private float _rotationY;
     public bool IsAlert;
+    private AudioSource _annoyedSound;
+    private AudioSource _dyingSound;
 
     void Start()
     {
@@ -30,6 +32,9 @@ public class BystanderMovement : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         _anim = GetComponent<Animator>();
         _player = GameObject.Find("Player").transform;
+        AudioSource[] sounds = gameObject.GetComponents<AudioSource>();
+        _annoyedSound = sounds[0];
+        _dyingSound = sounds[1];
     }
 
     void Update()
@@ -43,6 +48,7 @@ public class BystanderMovement : MonoBehaviour
 
             if (!_lookedAtPlayer)
             {
+                _annoyedSound.Play();
                 transform.LookAt(_player);
                 _rotationY = transform.localEulerAngles.y;
                 transform.localEulerAngles = new Vector3(0, _rotationY, 0);
@@ -75,7 +81,10 @@ public class BystanderMovement : MonoBehaviour
                 _rotationY = transform.localEulerAngles.y;
                 transform.localEulerAngles = new Vector3(0, _rotationY, 0);
             }
+            
         }
+        else if (!_alive)
+            _dyingSound.Play();
 
     }
 

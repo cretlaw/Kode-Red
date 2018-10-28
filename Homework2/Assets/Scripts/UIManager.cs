@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
 
     private Image _gameOverYWImg;
     private Text _gameOverText;
+    private Image _crossHair;
     private FPSInput _fpsInput;
     private PlayerWeaponsController _playerWeaponsController;
     private PlayerController _playerController;
@@ -24,6 +25,7 @@ public class UIManager : MonoBehaviour
         _killsBar = GameObject.Find("Kills").GetComponent<SimpleHealthBar>();
         _gameOverYWImg = GameObject.Find("GameOverYW").GetComponent<Image>();
         _gameOverText = GameObject.Find("YouWon").GetComponent<Text>();
+        _crossHair = GameObject.Find("CrossHair").GetComponent<Image>();
 
         _fpsInput = GameObject.Find("Player").GetComponent<FPSInput>();
         _playerController = GameObject.Find("Player").GetComponent<PlayerController>();
@@ -46,9 +48,11 @@ public class UIManager : MonoBehaviour
             _fpsInput.enabled = false;
             _playerWeaponsController.enabled = false;
             _playerController.StopEnemyShooting();
+            _crossHair.enabled = false;
 
             if (Input.GetKeyDown(KeyCode.R))
             {
+                _crossHair.enabled = true;
                 _gameOverYWImg.enabled = false;
                 _gameOverText.enabled = false;
                

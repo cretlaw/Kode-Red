@@ -16,7 +16,8 @@ public class PlayerController : MonoBehaviour
 
     private GameObject _gameOver;
     private SimpleHealthBar _healthBar;
-    
+    private Image _crossHair;
+
 
     void Start()
     {
@@ -30,7 +31,9 @@ public class PlayerController : MonoBehaviour
 
         _gameOver = GameObject.Find("GameOver");
         _healthBar = GameObject.Find("Health").GetComponent<SimpleHealthBar>();
-        
+
+        _crossHair = GameObject.Find("CrossHair").GetComponent<Image>();
+
 
 
     }
@@ -43,6 +46,7 @@ public class PlayerController : MonoBehaviour
         {
 
             _gameOver.GetComponent<Image>().enabled = true;
+            _crossHair.enabled = false;
             //Prevents the player from moving and shooting only moving camera
             _fpsInput.enabled = false;
             _playerWeaponsController.enabled = false;
@@ -50,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.R))
             {
-                
+                _crossHair.enabled = true;
                 _gameOver.GetComponent<Image>().enabled = false;
                 _sceneController.Reset();
                 _fpsInput.enabled = true;

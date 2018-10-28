@@ -19,6 +19,7 @@ public class SceneController : MonoBehaviour
 
     private PlayerController _player;
     private UIManager _uiManager;
+    private AudioSource _backgroundMusic;
 
 
     //This will be used to control the number of enemies on the scene.
@@ -30,6 +31,8 @@ public class SceneController : MonoBehaviour
         IntialSpawn();
         _player = GameObject.Find("Player").GetComponent<PlayerController>();
         _uiManager = GameObject.Find("Controller").GetComponent<UIManager>();
+        _backgroundMusic = GetComponent<AudioSource>();
+        _backgroundMusic.Play();
     }
 
 
