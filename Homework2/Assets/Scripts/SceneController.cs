@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,7 +18,6 @@ public class SceneController : MonoBehaviour
     private float _randomZ;
 
     private PlayerController _player;
-
 
     //This will be used to control the number of enemies on the scene.
     public int numOfEnemiesOnScene = 0;
@@ -76,7 +75,6 @@ public class SceneController : MonoBehaviour
 
     void IntialSpawn()
     {
-
         SpawnInRoom1(4);
         SpawnInRoom2(2);
         SpawnInRoom3(2);

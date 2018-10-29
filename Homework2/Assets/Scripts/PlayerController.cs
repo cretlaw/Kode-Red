@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -43,8 +43,6 @@ public class PlayerController : MonoBehaviour
     {
         health -= damage;
         Debug.Log("Health: " + health);
-
-
     }
 
     public void HealthPickup(int heal)
