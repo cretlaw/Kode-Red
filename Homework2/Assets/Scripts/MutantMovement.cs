@@ -1,61 +1,62 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
+[RequireComponent (typeof (NavMeshAgent))]
+[RequireComponent (typeof (Animator))]
 public class MutantMovement : MonoBehaviour {
+	[SerializeField] private float _range = 10f;
+    //public Transform _goal; // destination
+    private Transform _player;
+    private Animator _anim;
+    private bool _alive;
+    private float _distance;
+    private NavMeshAgent _agent;
 
-	public Transform player;
-	static Animator anim;
-    public int RoomNumber;
-
-    // Use this for initialization
-    void Start () {
-		anim = GetComponent<Animator>();
-	    player = GameObject.Find("Player").transform;
-	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-		Vector3 direction = player.position - this.transform.position;
+    void Start () 
+    {
+		_alive = true; 
+        // get a reference to the NavMesh Agent component
+        _agent = GetComponent<NavMeshAgent>();
+		_player = GameObject.Find("Player").transform;
+        _anim = GetComponent<Animator>();
+        // _anim.SetBool("byStanderRunning", true);
+    }
+
+    void Update()
+    {
+        
+		_distance = Vector3.Distance(this.transform.position, _player.transform.position);
+		Vector3 direction = _player.position - this.transform.position;
 		float angle = Vector3.Angle(direction, this.transform.forward);
-		if(Vector3.Distance(player.position, this.transform.position)< 10 && angle < 50){
-			direction.y = 0;
-
-			this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(direction), 0.1f);
-
-
-			anim.SetBool("isIdle", false);
-			if(direction.magnitude > 5){
-				this.transform.Translate(0, 0, 0.05f);
-				anim.SetBool("isWalking", true);
-				anim.SetBool("isAttacking", false);
-				anim.SetBool("isRunning", false);
-				anim.SetBool("isIdle", false);
-				
-				if(direction.magnitude > 6.5){
-					this.transform.Translate(0, 0, 0.07f);
-					anim.SetBool("isRunning", true);
-					anim.SetBool("isWalking", false);
-					anim.SetBool("isAttacking", false);
-					anim.SetBool("isIdle", false);
+        if(Vector3.Distance(_player.position, this.transform.position) < 10 && angle < 120){
+			_anim.SetBool("isIdle", false);
+			if(_alive && direction.magnitude > 5){
+				_agent.destination = _player.position;
+				_anim.SetBool("isWalking", true);
+				_anim.SetBool("isRunning", false);
+				_anim.SetBool("isAttacking", false);
+				if(_alive && direction.magnitude > 6.5){
+					_agent.destination = _player.position;
+					_anim.SetBool("isRunning", true);
+					_anim.SetBool("isWalking", false);
+					_anim.SetBool("isAttacking", false);
 				}
 			}else{
-				anim.SetBool("isAttacking", true);
-				anim.SetBool("isWalking", false);
-				anim.SetBool("isRunning", false);
-				anim.SetBool("isIdle", false);
+				_anim.SetBool("isAttacking", true);
+				_anim.SetBool("isWalking", false);
+				_anim.SetBool("isRunning", false);
 			}
 		}else{
-			anim.SetBool("isIdle", true);
-			anim.SetBool("isWalking", false);
-			anim.SetBool("isAttacking", false);
-			anim.SetBool("isRunning", false);
+			_anim.SetBool("isIdle", true);
+			_anim.SetBool("isWalking", false);
+			_anim.SetBool("isAttacking", false);
 		}
-
-	    
-	}
-
-
-   
+    }
+    public void SetAlive(bool alive)
+    {
+        _alive = alive;
+    }
 }
