@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -48,6 +48,11 @@ public class PlayerController : MonoBehaviour
     public void HealthPickup(int heal)
     {
         health += heal;
+        Debug.Log("Health: " + health);
+    }
+
+    public void SuperHealthPickup(int superHeal){
+        health += superHeal;
         Debug.Log("Health: " + health);
     }
 

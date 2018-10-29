@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class MutantShoot : MonoBehaviour {
-
+    public float speed = 3.0f;
+	public float obstacleRange = 5.0f;
 	[SerializeField] private GameObject fireballPrefab;
 	private GameObject _fireball;
 	
@@ -15,6 +16,7 @@ public class MutantShoot : MonoBehaviour {
 	void Update() {
 		if (_alive) {
 			
+			
 			Ray ray = new Ray(transform.position, transform.forward);
 			RaycastHit hit;
 			if (Physics.SphereCast(ray, 0.75f, out hit)) {
@@ -26,6 +28,10 @@ public class MutantShoot : MonoBehaviour {
 						_fireball.transform.rotation = transform.rotation;
 					}
 				}
+				/*else if (hit.distance < obstacleRange) {
+					float angle = Random.Range(-110, 110);
+					transform.Rotate(0, angle, 0);
+				}*/
 			}
 		}
 	}

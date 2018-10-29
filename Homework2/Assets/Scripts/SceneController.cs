@@ -1,12 +1,13 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
 public class SceneController : MonoBehaviour
 {
-
+    [SerializeField] private GameObject _firstAidPrefab;
     [SerializeField] private GameObject[] _enemyPrefabs;
+    private GameObject[] _firstAid = new GameObject[6];
     private GameObject[] _NPCs = new GameObject[10];
     private int _randEnemyIdentifier;
     private int _randRoomSpawn;
@@ -25,6 +26,7 @@ public class SceneController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        CreateFirstAidKits();
         IntialSpawn();
         _player = GameObject.Find("Player").GetComponent<PlayerController>();
     }
@@ -37,10 +39,18 @@ public class SceneController : MonoBehaviour
         player.transform.position = new Vector3(18.41f, 1f, -1.33f);
         player.transform.rotation = Quaternion.Euler(0f, -60f, 0f);
 
+
         //Reset Player's health and show it in console
         PlayerController playerCharacter = player.GetComponent<PlayerController>();
         playerCharacter.health = 100;
         Debug.Log("Health: " + playerCharacter.health);
+
+        //Reset First Aid Kits
+        for (int i = 0; i < _firstAid.Length; i++)
+        {
+            Destroy(_firstAid[i]);
+        }
+        CreateFirstAidKits();
 
         GameObject[] byStanders = GameObject.FindGameObjectsWithTag("byStander");
         if (byStanders != null && byStanders.Length != 0)
@@ -80,7 +90,19 @@ public class SceneController : MonoBehaviour
         SpawnInRoom3(2);
     }
 
+    void CreateFirstAidKits()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            _firstAid[i] = Instantiate(_firstAidPrefab) as GameObject;
+        }
 
+        _firstAid[0].transform.position = new Vector3(8.72f, 3.5097f, -16.85f);
+        _firstAid[1].transform.position = new Vector3(5.34f, 0.02f, -4.74f);
+        _firstAid[3].transform.position = new Vector3(-36.8f, 0.02f, 0.5f);
+        _firstAid[4].transform.position = new Vector3(-36.8f, 3.57f, 20.89f);
+        _firstAid[5].transform.position = new Vector3(-54.41f, 0.09f, 10.91f);
+    }
 
     public void ReSpawn()
     {
@@ -103,6 +125,7 @@ public class SceneController : MonoBehaviour
         else
             SpawnInRoom3(_randNumOfEnemies);
     }
+
 
     void SpawnInRoom1(int numOfEnemies)
     {
