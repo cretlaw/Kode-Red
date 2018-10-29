@@ -1213,8 +1213,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _range: 10
-  _goal: {fileID: 0}
-  _player: {fileID: 0}
 --- !u!114 &114761781735266816
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1319,7 +1317,7 @@ NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1594688365799870}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 1.5
