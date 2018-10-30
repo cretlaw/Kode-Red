@@ -34,7 +34,7 @@ public class MutantMovement : MonoBehaviour
         // _anim.SetBool("byStanderRunning", true);
         AudioSource[] sounds = gameObject.GetComponents<AudioSource>();
         _attackSound = sounds[0];
-        _Off_Mesh_Platform = GameObject.Find("Off_Mesh_Platform").transform;
+       ;
 
     }
 
@@ -76,10 +76,7 @@ public class MutantMovement : MonoBehaviour
             _anim.SetBool("isAttacking", false);
         }
 
-        _anim.SetBool("isJumping", true);
-        _anim.SetBool("isWalking", false);
-        _anim.SetBool("isRunning", false);
-        _anim.SetBool("isAttacking", false);
+        
     }
 
 
