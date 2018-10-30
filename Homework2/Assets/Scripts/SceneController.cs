@@ -38,7 +38,21 @@ public class SceneController : MonoBehaviour
         _backgroundMusic.Play();
     }
 
-
+    void Update()
+    {
+        if (numOfEnemiesOnScene > 10)
+        {
+            GameObject[] byStanders = GameObject.FindGameObjectsWithTag("byStander");
+            
+            if (byStanders != null && byStanders.Length != 0)
+            {
+                foreach (var b in byStanders)
+                {
+                    Destroy(b);
+                }
+            }
+        }
+    }
     
     public void Reset()
     {
@@ -58,7 +72,7 @@ public class SceneController : MonoBehaviour
             Destroy(_firstAid[i]);
         }
         CreateFirstAidKits();
-        
+
 
         GameObject[] byStanders = GameObject.FindGameObjectsWithTag("byStander");
         if (byStanders != null && byStanders.Length != 0)
