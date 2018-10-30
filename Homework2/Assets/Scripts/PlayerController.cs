@@ -81,8 +81,10 @@ public class PlayerController : MonoBehaviour
 
 
     }
-
-    public void HealthPickup(int heal)
+    /*The Health Pickup script calls the PlayerController to access
+    the players health through health kit pickup and increases
+    the players health */
+    public void HealthP(int heal)
     {
         health += heal;
         Debug.Log("Health: " + health);

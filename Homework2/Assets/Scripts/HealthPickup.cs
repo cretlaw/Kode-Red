@@ -1,7 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*Through the box collider the player
+is able to pick up a health kit in order to increase it's health */
+/*Health kits are box shaped objects with a red cross and also
+contains a red particle system */
 public class HealthPickup : MonoBehaviour {
 
 	[SerializeField] private int _heal = 30;
@@ -13,7 +16,7 @@ public class HealthPickup : MonoBehaviour {
 		}
 		PlayerController player = other.GetComponent<PlayerController>();
 		if(player != null){
-			player.HealthPickup(_heal);
+			player.HealthP(_heal);
 		}
 		Destroy(this.gameObject);
 	}

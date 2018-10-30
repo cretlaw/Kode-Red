@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SuperHealthPickup : MonoBehaviour {
-
+	/*The SuperHealthPickup is a special power-up pick up item
+	which increases the players health by 60; in camparison with 
+	the health kits that only increase the health by 20 */
 	[SerializeField] private int _heal = 60;
 	
 	
@@ -13,7 +15,7 @@ public class SuperHealthPickup : MonoBehaviour {
 		}
 		PlayerController player = other.GetComponent<PlayerController>();
 		if(player != null){
-			player.HealthPickup(_heal);
+			player.HealthP(_heal);
 		}
 		Destroy(this.gameObject);
 	}

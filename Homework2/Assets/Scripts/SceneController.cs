@@ -7,7 +7,9 @@ public class SceneController : MonoBehaviour
 {
 
     [SerializeField] private GameObject[] _enemyPrefabs;
+    [SerializeField] private GameObject _firstAidPrefab;
     private GameObject[] _NPCs = new GameObject[10];
+    private GameObject[] _firstAid = new GameObject[3];
     private int _randEnemyIdentifier;
     private int _randRoomSpawn;
 
@@ -29,6 +31,7 @@ public class SceneController : MonoBehaviour
     void Start()
     {
         IntialSpawn();
+        CreateFirstAidKits();
         _player = GameObject.Find("Player").GetComponent<PlayerController>();
         _uiManager = GameObject.Find("Controller").GetComponent<UIManager>();
         _backgroundMusic = GetComponent<AudioSource>();
@@ -48,6 +51,13 @@ public class SceneController : MonoBehaviour
         //Reset Player's health and show it in console
         PlayerController playerCharacter = player.GetComponent<PlayerController>();
         playerCharacter.health = 100;
+
+        //Reset First Aid Kits
+        for (int i = 0; i < _firstAid.Length; i++)
+        {
+            Destroy(_firstAid[i]);
+        }
+        CreateFirstAidKits();
         
 
         GameObject[] byStanders = GameObject.FindGameObjectsWithTag("byStander");
@@ -89,7 +99,18 @@ public class SceneController : MonoBehaviour
         SpawnInRoom3(1);
     }
 
+    /*Three first aid kits are created at different locations across the scene */
+    void CreateFirstAidKits()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            _firstAid[i] = Instantiate(_firstAidPrefab) as GameObject;
+        }
 
+        _firstAid[0].transform.position = new Vector3(-53.21f, 3.54f, 20.152f);
+        _firstAid[1].transform.position = new Vector3(-43.21f, 0.07f, 1.12f);
+        _firstAid[2].transform.position = new Vector3(-59.19f, 3.55f, 21.12f);
+    }
 
     public void ReSpawn()
     {

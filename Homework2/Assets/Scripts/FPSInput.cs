@@ -4,7 +4,7 @@ using System.Collections;
 /*
 This script allows the player to move up, down, left and right
 */
-
+/*A portion of the script allows the player to run */
 [RequireComponent(typeof(CharacterController))]
 [AddComponentMenu("Control Script/FPS Input")]
 public class FPSInput : MonoBehaviour
@@ -40,7 +40,8 @@ public class FPSInput : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.R))
             _sceneController.Reset();
-
+        /*When the character presses on the Left Shift button 
+        speed is translated to Runspeed making the player run*/
         if(Input.GetKey(KeyCode.LeftShift)){
             isRunning = true;
             speed = RunSpeed;
