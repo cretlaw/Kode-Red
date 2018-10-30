@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
-
+/*This script is charge of implementing the alert system to alert other enemies within his range that the player
+ has been spotted*/
 public class Mutant2Controller : MonoBehaviour
 {
 

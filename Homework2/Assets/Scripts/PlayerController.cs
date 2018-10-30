@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+/*This script keeps track of player health, damage, increase in health and stops enemies from shooting at him */
 public class PlayerController : MonoBehaviour
 {
 

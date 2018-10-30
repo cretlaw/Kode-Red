@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*this script is charge of allowing player to be teleported to another area in the scene*/
 public class PortalController : MonoBehaviour
 {
     

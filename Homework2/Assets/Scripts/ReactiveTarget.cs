@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.AI;
 
-
+/*This script is in charge of handling the action of an enemy dying*/
 public class ReactiveTarget : MonoBehaviour
 {
     private Animator _anim;

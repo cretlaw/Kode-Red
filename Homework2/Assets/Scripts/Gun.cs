@@ -11,7 +11,7 @@ public class Gun : MonoBehaviour
     private AudioSource _gunShot;
     
 
-    // Use this for initialization
+    /*This script is in charge of muzzle flash and correct timing for enemy 2 shooting*/
     void Start()
     {
         _player = GameObject.Find("Player");

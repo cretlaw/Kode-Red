@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+/*This script is in charge at mainting the spawining of enemies and pickup items, also to reset game*/
 public class SceneController : MonoBehaviour
 {
 

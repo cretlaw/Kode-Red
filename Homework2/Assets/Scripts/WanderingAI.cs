@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+/*This script is in charge of putting the enemies in wandering state when game over or player has beat the game*/
 public class WanderingAI : MonoBehaviour
 {
 

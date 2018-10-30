@@ -4,6 +4,7 @@ using UnityEngine.AI;
 using System.Collections;
 
 
+/*This script is in charge of bystanders movements and ascertaining the closest mutant 2 to run to*/
 
 public class BystanderMovement : MonoBehaviour
 {
