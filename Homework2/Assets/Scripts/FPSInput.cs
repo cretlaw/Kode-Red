@@ -48,7 +48,7 @@ public class FPSInput : MonoBehaviour
             print("Running");
         }else{
             isRunning = false;
-            speed = speed;
+            speed = 6.0f;
         }
     }
 }

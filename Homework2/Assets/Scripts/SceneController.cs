@@ -72,7 +72,7 @@ public class SceneController : MonoBehaviour
             Destroy(_firstAid[i]);
         }
         CreateFirstAidKits();
-
+        
 
         GameObject[] byStanders = GameObject.FindGameObjectsWithTag("byStander");
         if (byStanders != null && byStanders.Length != 0)

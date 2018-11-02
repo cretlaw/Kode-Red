@@ -15,6 +15,9 @@ public class HealthPickup : MonoBehaviour {
 			return;
 		}
 		PlayerController player = other.GetComponent<PlayerController>();
+		if(player.health == 100){
+			return;
+		}
 		if(player != null){
 			player.HealthP(_heal);
 		}

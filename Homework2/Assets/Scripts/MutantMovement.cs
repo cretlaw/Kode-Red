@@ -32,51 +32,47 @@ public class MutantMovement : MonoBehaviour
         _player = GameObject.Find("Player").transform;
         _anim = GetComponent<Animator>();
         // _anim.SetBool("byStanderRunning", true);
-        AudioSource[] sounds = gameObject.GetComponents<AudioSource>();
-        _attackSound = sounds[0];
-       ;
-
+		AudioSource[] sounds = gameObject.GetComponents<AudioSource>();
+		_attackSound = sounds[0];
+		
     }
 
     void Update()
     {
-        _distance = Vector3.Distance(this.transform.position, _player.transform.position);
-        Vector3 direction = _player.position - this.transform.position;
-        float angle = Vector3.Angle(direction, this.transform.forward);
-        if (Vector3.Distance(_player.position, this.transform.position) < 10 && angle < 360)
-        {
-            _anim.SetBool("isIdle", false);
-            if (_alive && direction.magnitude > 5)
-            {
-                _agent.destination = _player.position;
-                _anim.SetBool("isWalking", true);
-                _anim.SetBool("isRunning", false);
-                _anim.SetBool("isAttacking", false);
-                if (_alive && direction.magnitude > 6.5)
-                {
-                    _agent.destination = _player.position;
-                    _agent.speed = runSpeed;
-                    _anim.SetBool("isRunning", true);
-                    _anim.SetBool("isWalking", false);
-                    _anim.SetBool("isAttacking", false);
-                }
-            }
-            else
-            {
-                _anim.SetBool("isAttacking", true);
-                _attackSound.Play();
-                _anim.SetBool("isWalking", false);
-                _anim.SetBool("isRunning", false);
-            }
-        }
-        else
-        {
-            _anim.SetBool("isIdle", true);
-            _anim.SetBool("isWalking", false);
-            _anim.SetBool("isAttacking", false);
-        }
-
-        
+		_distance = Vector3.Distance(this.transform.position, _player.transform.position);
+		Vector3 direction = _player.position - this.transform.position;
+		float angle = Vector3.Angle(direction, this.transform.forward);
+        if(Vector3.Distance(_player.position, this.transform.position) < 10 && angle < 360){
+			_anim.SetBool("isIdle", false);
+			if(_alive && direction.magnitude > 5){
+				_agent.destination = _player.position;
+				_anim.SetBool("isWalking", true);
+				_anim.SetBool("isRunning", false);
+				_anim.SetBool("isAttacking", false);
+				if(_alive && direction.magnitude > 6.5){
+					_agent.destination = _player.position;
+					_agent.speed = runSpeed;
+					_anim.SetBool("isRunning", true);
+					_anim.SetBool("isWalking", false);
+					_anim.SetBool("isAttacking", false);
+				}
+			}else{
+				_anim.SetBool("isAttacking", true);
+				_attackSound.Play();
+				_anim.SetBool("isWalking", false);
+				_anim.SetBool("isRunning", false);
+			}
+		}else{
+			_anim.SetBool("isIdle", true);
+			_anim.SetBool("isWalking", false);
+			_anim.SetBool("isAttacking", false);
+		}
+		if(_Off_Mesh_Platform.position == this.transform.position){
+			_anim.SetBool("isJumping", true);
+			_anim.SetBool("isWalking", false);
+			_anim.SetBool("isRunning", false);
+			_anim.SetBool("isAttacking", false);
+		}
     }
 
 
