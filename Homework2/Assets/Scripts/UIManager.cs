@@ -6,9 +6,10 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
 
-    public int NumOfKills = 15;
+    public int NumOfKills = 0;
 
     private SimpleHealthBar _killsBar;
+    private Text _killsTxt;
 
     private Image _gameOverYWImg;
     private Text _gameOverText;
@@ -23,6 +24,8 @@ public class UIManager : MonoBehaviour
     {
 
         _killsBar = GameObject.Find("Kills").GetComponent<SimpleHealthBar>();
+        _killsTxt = GameObject.Find("KillsTxt").GetComponent<Text>();
+        _killsTxt.text = "Killed " + NumOfKills;
         _gameOverYWImg = GameObject.Find("GameOverYW").GetComponent<Image>();
         _gameOverText = GameObject.Find("YouWon").GetComponent<Text>();
         _crossHair = GameObject.Find("CrossHair").GetComponent<Image>();
@@ -40,7 +43,7 @@ public class UIManager : MonoBehaviour
     {
         _killsBar.UpdateBar(NumOfKills, 15);
 
-        if (NumOfKills <= 0)
+        if (NumOfKills >= 15)
         {
             _gameOverYWImg.enabled = true;
             _gameOverText.enabled = true;
@@ -67,7 +70,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateKillsBar()
     {
-        --NumOfKills;
-      
+        ++NumOfKills;
+        _killsTxt.text = "Killed " + NumOfKills;
     }
 }

@@ -1157,58 +1157,29 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 119886, guid: 34017cf12560c804bb2f669f00c7af91,
     type: 2}
   m_PrefabInternal: {fileID: 2130982521}
---- !u!114 &78404142
-MonoBehaviour:
+--- !u!132 &78404145
+GUIText:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 78404141}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1310e65397a274d44a776b51d6937f61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  barImage: {fileID: 78404143}
-  colorMode: 0
-  barColor: {r: 0.16660735, g: 0.58705014, b: 0.9056604, a: 1}
-  barGradient:
+  serializedVersion: 3
+  m_Text: 
+  m_Anchor: 0
+  m_Alignment: 0
+  m_PixelOffset: {x: 0, y: 0}
+  m_LineSpacing: 1
+  m_TabSize: 4
+  m_Font: {fileID: 12800000, guid: d49bd663833b17d4395d3c5ea3770c44, type: 3}
+  m_Material: {fileID: 0}
+  m_FontSize: 0
+  m_FontStyle: 0
+  m_Color:
     serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 1}
-    key1: {r: 1, g: 1, b: 1, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 65535
-    ctime2: 0
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
-  displayText: 0
-  barText: {fileID: 0}
-  additionalText: 
---- !u!114 &78404143 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 11459380, guid: 34017cf12560c804bb2f669f00c7af91,
-    type: 2}
-  m_PrefabInternal: {fileID: 2130982521}
-  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+    rgba: 4294967295
+  m_PixelCorrect: 1
+  m_RichText: 1
 --- !u!1001 &80759860
 Prefab:
   m_ObjectHideFlags: 0
@@ -23100,7 +23071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c21c676444d402241b54e153eb46600c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NumOfKills: 15
+  NumOfKills: 0
 --- !u!82 &977555388
 AudioSource:
   m_ObjectHideFlags: 0
@@ -40354,61 +40325,31 @@ Prefab:
       propertyPath: m_Name
       value: HealthBar
       objectReference: {fileID: 0}
-    - target: {fileID: 11459380, guid: 34017cf12560c804bb2f669f00c7af91, type: 2}
-      propertyPath: m_Type
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 11459380, guid: 34017cf12560c804bb2f669f00c7af91, type: 2}
-      propertyPath: m_FillMethod
+    - target: {fileID: 114872563676104594, guid: 34017cf12560c804bb2f669f00c7af91,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: d49bd663833b17d4395d3c5ea3770c44,
+        type: 3}
+    - target: {fileID: 114872563676104594, guid: 34017cf12560c804bb2f669f00c7af91,
+        type: 2}
+      propertyPath: m_FontData.m_FontStyle
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 11459380, guid: 34017cf12560c804bb2f669f00c7af91, type: 2}
-      propertyPath: m_Color.r
-      value: 0.16660735
+    - target: {fileID: 114872563676104594, guid: 34017cf12560c804bb2f669f00c7af91,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 16
       objectReference: {fileID: 0}
-    - target: {fileID: 11459380, guid: 34017cf12560c804bb2f669f00c7af91, type: 2}
-      propertyPath: m_Color.g
-      value: 0.58705014
-      objectReference: {fileID: 0}
-    - target: {fileID: 11459380, guid: 34017cf12560c804bb2f669f00c7af91, type: 2}
-      propertyPath: m_Color.b
-      value: 0.9056604
-      objectReference: {fileID: 0}
-    - target: {fileID: 198710, guid: 34017cf12560c804bb2f669f00c7af91, type: 2}
-      propertyPath: m_Name
-      value: Health
-      objectReference: {fileID: 0}
-    - target: {fileID: 11448154, guid: 34017cf12560c804bb2f669f00c7af91, type: 2}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11448154, guid: 34017cf12560c804bb2f669f00c7af91, type: 2}
-      propertyPath: m_Color.g
-      value: 0.76736045
-      objectReference: {fileID: 0}
-    - target: {fileID: 11448154, guid: 34017cf12560c804bb2f669f00c7af91, type: 2}
-      propertyPath: m_Color.b
+    - target: {fileID: 114872563676104594, guid: 34017cf12560c804bb2f669f00c7af91,
+        type: 2}
+      propertyPath: m_FontData.m_MinSize
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 132408, guid: 34017cf12560c804bb2f669f00c7af91, type: 2}
-      propertyPath: m_Name
-      value: Kills
-      objectReference: {fileID: 0}
-    - target: {fileID: 11471602, guid: 34017cf12560c804bb2f669f00c7af91, type: 2}
-      propertyPath: barColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11471602, guid: 34017cf12560c804bb2f669f00c7af91, type: 2}
-      propertyPath: barColor.g
-      value: 0.76736045
-      objectReference: {fileID: 0}
-    - target: {fileID: 11471602, guid: 34017cf12560c804bb2f669f00c7af91, type: 2}
-      propertyPath: barColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11448154, guid: 34017cf12560c804bb2f669f00c7af91, type: 2}
-      propertyPath: m_FillAmount
-      value: 1
+    - target: {fileID: 114872563676104594, guid: 34017cf12560c804bb2f669f00c7af91,
+        type: 2}
+      propertyPath: m_FontData.m_MaxSize
+      value: 118
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34017cf12560c804bb2f669f00c7af91, type: 2}
