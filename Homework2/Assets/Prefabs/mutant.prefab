@@ -124,7 +124,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4261373838182748}
-  - component: {fileID: 114761781735266816}
   m_Layer: 0
   m_Name: Mutant:RightHand
   m_TagString: Untagged
@@ -381,12 +380,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4645104920412236}
   - component: {fileID: 95734029457809126}
-  - component: {fileID: 65708477676232310}
   - component: {fileID: 195163969514256140}
   - component: {fileID: 114115804067985788}
   - component: {fileID: 114141140282543690}
-  - component: {fileID: 114636641475299726}
   - component: {fileID: 82474985573435942}
+  - component: {fileID: 114624812996741906}
   m_Layer: 0
   m_Name: mutant
   m_TagString: mutant
@@ -987,7 +985,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1594688365799870}
   m_LocalRotation: {x: 0, y: -0.99999315, z: 0, w: -0.0036989164}
-  m_LocalPosition: {x: 13.36437, y: 0.21251334, z: -2.3877344}
+  m_LocalPosition: {x: 20.716122, y: 0.21251334, z: 11.973186}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4606060709570624}
@@ -1150,18 +1148,6 @@ Transform:
   m_Father: {fileID: 4405628249953988}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &65708477676232310
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1594688365799870}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1.9677801, z: 1}
-  m_Center: {x: 0, y: 0, z: -0}
 --- !u!82 &82474985573435942
 AudioSource:
   m_ObjectHideFlags: 1
@@ -1266,10 +1252,10 @@ Animator:
   m_GameObject: {fileID: 1594688365799870}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 9bb885be92d424d16a213ea1122663b9, type: 3}
-  m_Controller: {fileID: 9100000, guid: a094973395d0c47f5a1779f9ea3a120d, type: 2}
+  m_Controller: {fileID: 9100000, guid: a52106b943e8e4314aae3355f01791dc, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -1297,7 +1283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf0f822e8b2df1b42aab3c3c91711a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114636641475299726
+--- !u!114 &114624812996741906
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1305,25 +1291,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1594688365799870}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 260e63dd106fd4074b1fbc4f0216931c, type: 3}
+  m_Script: {fileID: 11500000, guid: 60f116c71baa44616b98194b5997d3c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _range: 10
---- !u!114 &114761781735266816
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1121956168223916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8d3da177551e4eaaa74d7f3460727b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  obstacleRange: 5
-  fireballPrefab: {fileID: 1956094904363052, guid: 1f9ef580ea5794f8c9de10a4c5fab2d6,
-    type: 2}
+  goal: {fileID: 0}
 --- !u!137 &137733363610005810
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1413,10 +1384,10 @@ NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1594688365799870}
-  m_Enabled: 0
+  m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 1.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
