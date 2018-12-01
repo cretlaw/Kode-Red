@@ -109,8 +109,8 @@ public class SceneController : MonoBehaviour
     {
 
         SpawnInRoom1(3);
-        SpawnInRoom2(1);
-        SpawnInRoom3(1);
+        SpawnInRoom2(2);
+        SpawnInRoom3(2);
     }
 
     /*Three first aid kits are created at different locations across the scene */

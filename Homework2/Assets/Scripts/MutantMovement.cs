@@ -67,12 +67,7 @@ public class MutantMovement : MonoBehaviour
 			_anim.SetBool("isWalking", false);
 			_anim.SetBool("isAttacking", false);
 		}
-		if(_Off_Mesh_Platform.position == this.transform.position){
-			_anim.SetBool("isJumping", true);
-			_anim.SetBool("isWalking", false);
-			_anim.SetBool("isRunning", false);
-			_anim.SetBool("isAttacking", false);
-		}
+		
     }
 
 
