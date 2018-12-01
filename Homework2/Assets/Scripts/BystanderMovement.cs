@@ -33,9 +33,9 @@ public class BystanderMovement : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         _anim = GetComponent<Animator>();
         _player = GameObject.Find("Player").transform;
-        AudioSource[] sounds = gameObject.GetComponents<AudioSource>();
-        _annoyedSound = sounds[0];
-        _dyingSound = sounds[1];
+         _annoyedSound= gameObject.GetComponent<AudioSource>();
+      
+        
     }
 
     void Update()
@@ -84,8 +84,8 @@ public class BystanderMovement : MonoBehaviour
             }
             
         }
-        else if (!_alive)
-            _dyingSound.Play();
+        /*else if (!_alive)
+            _dyingSound.Play();*/
 
     }
 

@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private GameObject _gameOver;
     private SimpleHealthBar _healthBar;
     private Image _crossHair;
+    private AudioSource _healthAPickUpSound;
 
 
     void Start()
@@ -34,6 +35,7 @@ public class PlayerController : MonoBehaviour
 
         _crossHair = GameObject.Find("CrossHair").GetComponent<Image>();
 
+        _healthAPickUpSound = GetComponent<AudioSource>();
 
 
     }
@@ -86,6 +88,7 @@ public class PlayerController : MonoBehaviour
     the players health */
     public void HealthP(int heal)
     {
+        _healthAPickUpSound.Play();
         health += heal;
         Debug.Log("Health: " + health);
     }

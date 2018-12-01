@@ -26,6 +26,7 @@ public class PlayerWeaponsController : MonoBehaviour
     [SerializeField] private GameObject _handGunBulletHolePrefab;
     [SerializeField] private GameObject _riffleBulletHolePrefab;
     private GameObject _BulletHole;
+    private AudioSource _gunFire;
 
 
     // Use this for initialization
@@ -33,7 +34,7 @@ public class PlayerWeaponsController : MonoBehaviour
     {
         // refer to the camera parent of the weapons object
         _camera = GetComponentInParent<Camera>();
-
+        _gunFire = GetComponent<AudioSource>();
         _playerGun = Guns.Rifle;
         _currentGun = 0;
         Cursor.lockState = CursorLockMode.Locked;
@@ -47,7 +48,7 @@ public class PlayerWeaponsController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
 
-
+            _gunFire.Play();
             Vector3 point = new Vector3(_camera.pixelWidth / 2, _camera.pixelHeight / 2, 0);
             Ray ray = _camera.ScreenPointToRay(point);
             RaycastHit hit;
