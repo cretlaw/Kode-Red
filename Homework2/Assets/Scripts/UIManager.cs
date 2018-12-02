@@ -19,9 +19,17 @@ public class UIManager : MonoBehaviour
     private PlayerController _playerController;
     private SceneController _sceneController;
 
+    private AudioSource[] _allAudioSource;
+    private bool _isMusicOn;
+    private Button _musicButton;
+
     // Use this for initialization
     void Start ()
     {
+
+        _isMusicOn = true;
+       
+        _musicButton = GameObject.Find("musicBtn").GetComponent<Button>();
 
         _killsBar = GameObject.Find("Kills").GetComponent<SimpleHealthBar>();
         _killsTxt = GameObject.Find("KillsTxt").GetComponent<Text>();
@@ -41,6 +49,8 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
+        _allAudioSource = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
+
         _killsBar.UpdateBar(NumOfKills, 15);
 
         if (NumOfKills >= 15)
@@ -68,6 +78,32 @@ public class UIManager : MonoBehaviour
         }
     }
 
+
+    public void toggleMusic()
+    {
+        if (_isMusicOn)
+        {
+            foreach (var audioSrc in _allAudioSource)
+            {
+                if(audioSrc != null)
+                    audioSrc.enabled = false;
+            }
+            _musicButton.GetComponent<Image>().color = Color.red;
+            _musicButton.GetComponentInChildren<Text>().text = "off";
+            _isMusicOn = !_isMusicOn;
+        }
+        else
+        {
+            foreach (var audioSrc in _allAudioSource)
+            {
+                if(audioSrc != null)
+                    audioSrc.enabled = true;
+            }
+            _musicButton.GetComponent<Image>().color = Color.white;
+            _musicButton.GetComponentInChildren<Text>().text = "on";
+            _isMusicOn = !_isMusicOn;
+        }
+    }
     public void UpdateKillsBar()
     {
         ++NumOfKills;
