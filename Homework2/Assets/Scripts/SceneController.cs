@@ -56,7 +56,7 @@ public class SceneController : MonoBehaviour
     
     public void Reset()
     {
-        _uiManager.NumOfKills = 15;
+        _uiManager.NumOfKills = 0;
         //Reset Player intial position and rotation
         GameObject player = GameObject.Find("Player");
         player.transform.position = new Vector3(18.41f, 1f, -1.33f);
@@ -121,9 +121,9 @@ public class SceneController : MonoBehaviour
             _firstAid[i] = Instantiate(_firstAidPrefab) as GameObject;
         }
 
-        _firstAid[0].transform.position = new Vector3(-53.21f, 3.54f, 20.152f);
+        _firstAid[0].transform.position = new Vector3(-53.21f, 3.50975f, 20.152f);
         _firstAid[1].transform.position = new Vector3(-43.21f, 0.07f, 1.12f);
-        _firstAid[2].transform.position = new Vector3(-59.19f, 3.55f, 21.12f);
+        _firstAid[2].transform.position = new Vector3(-59.19f, 3.50975f, 21.12f);
     }
 
     public void ReSpawn()
@@ -272,7 +272,7 @@ public class SceneController : MonoBehaviour
 
     Vector3 GetRoom1Locations()
     {
-        _randMutant2Locations = Random.Range(1, 4);
+        _randMutant2Locations = Random.Range(1, 10);
         switch (_randMutant2Locations)
         {
             case 1:
@@ -284,10 +284,24 @@ public class SceneController : MonoBehaviour
             case 3:
                 _enemySpawnPoint = new Vector3(-30.85f, 0, 11.9f);
                 break;
-            default:
+            case 4:
+                _enemySpawnPoint = new Vector3(-17.5f,0,-11.9f);
+                break;
+            case 5:
                 _enemySpawnPoint = new Vector3(-54f, 0, 10.75f);
                 break;
-
+            case 6:
+                _enemySpawnPoint = new Vector3(-56.13f,0,-9.34f);
+                break;
+            case 7:
+                _enemySpawnPoint = new Vector3(-28.78587f, 0, 9767597f);
+                break;
+            case 8:
+                _enemySpawnPoint =new Vector3(-28.78587f, 0, 0.73f);
+                break;
+            case 9:
+                _enemySpawnPoint = new Vector3(-28.78587f, 0, 2.93f);
+                break;
         }
 
         return _enemySpawnPoint;
@@ -299,18 +313,37 @@ public class SceneController : MonoBehaviour
     {
         _randomX = Random.Range(-47.19f, 11.56f);
         _randomZ = Random.Range(17.25f, 25.3f);
-        return new Vector3(_randomX, 4.16f, _randomZ);
+        return new Vector3(_randomX, 3.50975f, _randomZ);
 
     }
 
     private Vector3 GetRoom2Locations()
     {
-        _randMutant2Locations = Random.Range(1, 3);
+        _randMutant2Locations = Random.Range(1, 7);
 
-        if (_randMutant2Locations == 1)
-            return new Vector3(17.16f, 4.16f, 24.61f);
+        switch (_randMutant2Locations)
+        {
+            case 1:
+                _enemySpawnPoint = new Vector3(17.16f, 3.509723f, 24.61f);
+                break;
+            case 2:
+                _enemySpawnPoint = new Vector3(-55.35f, 3.509723f, 26.1f);
+                break;
+            case 3:
+                _enemySpawnPoint = new Vector3(-55.35f, 3.509723f, 24.38f);
+                break;
+            case 4:
+                _enemySpawnPoint = new Vector3(-57.77727f, 3.50975f, 24.38f);
+                break;
+            case 5:
+                _enemySpawnPoint = new Vector3(-5.163758f, 3.509723f, 26.45887f);
+                break;
+            case 6:
+                _enemySpawnPoint = new Vector3(-22.33096f, 3.509723f, 21.09541f);
+                break;
+        }
 
-        return new Vector3(-54.13f, 4.16f, 24.97f);
+        return _enemySpawnPoint;
     }
 
     //left Platform to the right of player's starting postion
@@ -318,18 +351,38 @@ public class SceneController : MonoBehaviour
     {
         _randomX = Random.Range(-46.95f, 10.6f);
         _randomZ = Random.Range(-22.3f, -15.4f);
-        return new Vector3(_randomX, 4.16f, _randomZ);
+        return new Vector3(_randomX, 3.50975f, _randomZ);
 
     }
 
     private Vector3 GetRoom3Locations()
     {
-        _randMutant2Locations = Random.Range(1, 3);
+        _randMutant2Locations = Random.Range(1, 7);
 
-        if (_randMutant2Locations == 1)
-            return new Vector3(16.5f, 4.16f, -21.6f);
+        switch (_randMutant2Locations)
+        {
+            case 1:
+                _enemySpawnPoint = new Vector3(16.5f, 3.50975f, -21.6f);
+                break;
+            case 2:
+                _enemySpawnPoint = new Vector3(-53.15f, 3.50975f, -21.6f);
+                break;
+            case 3:
+                _enemySpawnPoint = new Vector3(-34.79292f, 3.50975f, -23.21102f);
+                break;
+            case 4:
+                _enemySpawnPoint = new Vector3(-22.59f, 3.50975f, -21.6127f);
+                break;
+            case 5:
+                _enemySpawnPoint = new Vector3(16.13594f, 3.50975f, -23.53f);
+                break;
+            case 6:
+                _enemySpawnPoint = new Vector3(17.34733f, 3.50975f, -21.50537f);
+                break;
 
-        return new Vector3(-53.15f, 4.16f, -21.6f);
+        }
+
+        return _enemySpawnPoint;
     }
 
 
