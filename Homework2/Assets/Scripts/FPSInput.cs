@@ -39,7 +39,9 @@ public class FPSInput : MonoBehaviour
 
 
         if(Input.GetKeyDown(KeyCode.R))
-            _sceneController.Reset();
+            Application.LoadLevel(0);
+
+        
         /*When the character presses on the Left Shift button 
         speed is translated to Runspeed making the player run*/
         if(Input.GetKey(KeyCode.LeftShift)){
