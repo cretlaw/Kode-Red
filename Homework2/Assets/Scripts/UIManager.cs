@@ -23,6 +23,8 @@ public class UIManager : MonoBehaviour
     private bool _isMusicOn;
     private Button _musicButton;
 
+    private Image _helpScreen;
+
     // Use this for initialization
     void Start ()
     {
@@ -30,7 +32,7 @@ public class UIManager : MonoBehaviour
         _isMusicOn = true;
        
         _musicButton = GameObject.Find("musicBtn").GetComponent<Button>();
-
+        _helpScreen = GameObject.Find("Help_Screen").GetComponent<Image>();
         _killsBar = GameObject.Find("Kills").GetComponent<SimpleHealthBar>();
         _killsTxt = GameObject.Find("KillsTxt").GetComponent<Text>();
         _killsTxt.text = "Killed " + NumOfKills;
@@ -44,6 +46,7 @@ public class UIManager : MonoBehaviour
         _playerWeaponsController = GameObject.Find("Weapons").GetComponent<PlayerWeaponsController>();
         _sceneController = gameObject.GetComponent<SceneController>();
 
+       
 
     }
 
@@ -66,8 +69,21 @@ public class UIManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.R))
                 Application.LoadLevel(0);
 
-
         }
+
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            _helpScreen.enabled = true;
+            _helpScreen.GetComponentInChildren<Text>().enabled = true;
+            GameObject.Find("backBtn").GetComponent<Image>().enabled = true;
+        }
+    }
+
+    public void helpScreenBack()
+    {
+        _helpScreen.enabled = false;
+        _helpScreen.GetComponentInChildren<Text>().enabled = false;
+        GameObject.Find("backBtn").GetComponent<Image>().enabled = false;
     }
 
 
