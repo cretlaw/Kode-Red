@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 /*This script keeps track of player health, damage, increase in health and stops enemies from shooting at him */
@@ -56,10 +57,16 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.R))
                 Application.LoadLevel(0);
-              
-                
-            
+
+
+
+
         }
+
+
+
+        if (Input.GetKeyDown(KeyCode.Q))
+            EditorApplication.isPlaying = false;
 
         if (gameObject.transform.position.z < -13.5693f)
             RoomNumber = 3;
