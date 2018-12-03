@@ -64,15 +64,7 @@ public class UIManager : MonoBehaviour
             _crossHair.enabled = false;
 
             if (Input.GetKeyDown(KeyCode.R))
-            {
-                _crossHair.enabled = true;
-                _gameOverYWImg.enabled = false;
-                _gameOverText.enabled = false;
-               
-                _sceneController.Reset();
-                _fpsInput.enabled = true;
-                _playerWeaponsController.enabled = true;
-            }
+                Application.LoadLevel(0);
 
 
         }

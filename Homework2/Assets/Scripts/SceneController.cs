@@ -38,72 +38,8 @@ public class SceneController : MonoBehaviour
         _backgroundMusic.Play();
     }
 
-    void Update()
-    {
-        if (numOfEnemiesOnScene > 10)
-        {
-            GameObject[] byStanders = GameObject.FindGameObjectsWithTag("byStander");
-            
-            if (byStanders != null && byStanders.Length != 0)
-            {
-                foreach (var b in byStanders)
-                {
-                    Destroy(b);
-                }
-            }
-        }
-    }
-    
-    public void Reset()
-    {
-        _uiManager.NumOfKills = 0;
-        //Reset Player intial position and rotation
-        GameObject player = GameObject.Find("Player");
-        player.transform.position = new Vector3(18.41f, 1f, -1.33f);
-        player.transform.rotation = Quaternion.Euler(0f, -60f, 0f);
 
-        //Reset Player's health and show it in console
-        PlayerController playerCharacter = player.GetComponent<PlayerController>();
-        playerCharacter.health = 100;
-
-        //Reset First Aid Kits
-        for (int i = 0; i < _firstAid.Length; i++)
-        {
-            Destroy(_firstAid[i]);
-        }
-        CreateFirstAidKits();
-        
-
-        GameObject[] byStanders = GameObject.FindGameObjectsWithTag("byStander");
-        if (byStanders != null && byStanders.Length != 0)
-        {
-            foreach (var b in byStanders)
-            {
-                Destroy(b);
-            }
-        }
-
-        GameObject[] mutants = GameObject.FindGameObjectsWithTag("mutant");
-        if (mutants != null && mutants.Length != 0)
-        {
-            foreach (var m in mutants)
-            {
-                Destroy(m);
-            }
-        }
-
-        GameObject[] mutants2 = GameObject.FindGameObjectsWithTag("mutant2");
-        if (mutants2 != null && mutants2.Length != 0)
-        {
-            foreach (var m2 in mutants2)
-            {
-                Destroy(m2);
-            }
-        }
-
-        numOfEnemiesOnScene = 0;
-        IntialSpawn();
-    }
+  
 
     void IntialSpawn()
     {

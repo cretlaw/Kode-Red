@@ -55,14 +55,10 @@ public class PlayerController : MonoBehaviour
             StopEnemyShooting();
 
             if (Input.GetKeyDown(KeyCode.R))
-            {
-                _crossHair.enabled = true;
-                _gameOver.GetComponent<Image>().enabled = false;
-                _sceneController.Reset();
-                _fpsInput.enabled = true;
-                _playerWeaponsController.enabled = true;
+                Application.LoadLevel(0);
+              
                 
-            }
+            
         }
 
         if (gameObject.transform.position.z < -13.5693f)
@@ -103,8 +99,8 @@ public class PlayerController : MonoBehaviour
         {
             foreach (var m in mutants)
             {
-                m.GetComponent<MutantMovement>().enabled = false;
-                m.GetComponentInChildren<MutantShoot>().enabled = false;
+                m.GetComponent<Enemy1Movement>().enabled = false;
+                /*m.GetComponentInChildren<MutantShoot>().enabled = false;*/
                 m.GetComponent<WanderingAI>().enabled = true;
                 m.GetComponent<ReactiveTarget>().enabled = false;
             }
