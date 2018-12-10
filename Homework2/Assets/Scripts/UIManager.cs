@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -66,6 +67,9 @@ public class UIManager : MonoBehaviour
             _playerController.StopEnemyShooting();
             _crossHair.enabled = false;
 
+            //Start the Victory Scene
+            StartCoroutine(PlayVictoryScene());
+
             if (Input.GetKeyDown(KeyCode.R))
                 Application.LoadLevel(0);
 
@@ -78,6 +82,11 @@ public class UIManager : MonoBehaviour
             GameObject.Find("backBtn").GetComponent<Image>().enabled = true;
         }
     }
+    //Create Victory Scene Coroutine
+    IEnumerator PlayVictoryScene(){
+		yield return new WaitForSeconds(4);
+		SceneManager.LoadScene("VictoryScene", LoadSceneMode.Single);
+	}
 
     public void helpScreenBack()
     {

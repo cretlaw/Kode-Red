@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 /*This script keeps track of player health, damage, increase in health and stops enemies from shooting at him */
 public class PlayerController : MonoBehaviour
 {
@@ -55,6 +57,9 @@ public class PlayerController : MonoBehaviour
             _playerWeaponsController.enabled = false;
             StopEnemyShooting();
 
+            //Start the Losing Scene
+            StartCoroutine(PlayLoseScene());
+
             if (Input.GetKeyDown(KeyCode.R))
                 Application.LoadLevel(0);
 
@@ -78,6 +83,13 @@ public class PlayerController : MonoBehaviour
 
 
     }
+
+    //Create Defeated Scene Coroutine
+    IEnumerator PlayLoseScene(){
+		yield return new WaitForSeconds(4);
+		SceneManager.LoadScene("LoseScene", LoadSceneMode.Single);
+	}
+
     public void Hurt(int damage)
     {
         health -= damage;
