@@ -27,9 +27,9 @@ public class ReactiveTarget : MonoBehaviour
         if ( staticShootingEnemy!= null)
             staticShootingEnemy.SetAlive(false);
 
-        MutantShoot ms = GetComponent<MutantShoot>();
-        if(ms != null)
-            ms.SetAlive(false);
+        MutantShoot mv = GetComponent<MutantShoot>();
+        if(mv != null)
+            mv.SetAlive(false);
         
 
         BystanderMovement byStander = GetComponent<BystanderMovement>();

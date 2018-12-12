@@ -19,18 +19,16 @@ public class MutantMovement : MonoBehaviour
     private bool _alive;
     private float _distance;
     private AudioSource _attackSound;
-
+    private MutantShoot mv;
 
     void Start()
     {
         _alive = true;
-        // get a reference to the NavMesh Agent component
-        
         _player = GameObject.Find("Player").transform;
         _anim = GetComponent<Animator>();
-        // _anim.SetBool("byStanderRunning", true);
         AudioSource[] sounds = gameObject.GetComponents<AudioSource>();
         _attackSound = sounds[0];
+        mv = GetComponent<MutantShoot>();
         
     }
 
@@ -39,22 +37,25 @@ public class MutantMovement : MonoBehaviour
         
         Vector3 direction = _player.position - this.transform.position;
         float angle = Vector3.Angle(direction, this.transform.forward);
-        if(Vector3.Distance(_player.position, this.transform.position) < 10 && angle < 360){
+        if(Vector3.Distance(_player.position, this.transform.position) < 10 && angle < 180){
+            direction.y = 0;
+
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(direction), 0.1f);
+
             _anim.SetBool("isIdle", false);
-            transform.LookAt(_player);
-            if(_alive && direction.magnitude > 5){
-                //this.transform.Translate(0, 0, 0.05f);
+            if(direction.magnitude > 5){
+                this.transform.Translate(0, 0, 0.05f);
                 _anim.SetBool("isWalking", true);
-                _anim.SetBool("isRunning", false);
-                if(_alive && direction.magnitude > 6.5){
-                    //this.transform.Translate(0, 0, 0.7f);
-                    _anim.SetBool("isRunning", true);
-                    _anim.SetBool("isWalking", false);
-                }
+                _anim.SetBool("isAttacking", false);
+            }else{
+                _anim.SetBool("isAttacking", true);
+                _anim.SetBool("isWalking", false);
+                mv.enabled = true;
             }
         }else{
             _anim.SetBool("isIdle", true);
             _anim.SetBool("isWalking", false);
+            _anim.SetBool("isAttacking", false);
         }
     }
 

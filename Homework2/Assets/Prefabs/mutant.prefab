@@ -139,6 +139,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4482277453030804}
+  - component: {fileID: 114549796043114528}
   m_Layer: 0
   m_Name: Mutant:LeftHand
   m_TagString: Untagged
@@ -259,6 +260,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4996219783050860}
+  - component: {fileID: 65377070469843892}
+  - component: {fileID: 114928128520200960}
   m_Layer: 0
   m_Name: Mutant:LeftArm
   m_TagString: Untagged
@@ -384,8 +387,8 @@ GameObject:
   - component: {fileID: 114115804067985788}
   - component: {fileID: 114141140282543690}
   - component: {fileID: 82474985573435942}
-  - component: {fileID: 114624812996741906}
-  - component: {fileID: 114942995483532978}
+  - component: {fileID: 114410245229569588}
+  - component: {fileID: 65263461918814964}
   m_Layer: 0
   m_Name: mutant
   m_TagString: mutant
@@ -1149,6 +1152,30 @@ Transform:
   m_Father: {fileID: 4405628249953988}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &65263461918814964
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1594688365799870}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.61353576, y: 1.4177065, z: 0.66668147}
+  m_Center: {x: -0.19323215, y: 0.55061245, z: 0.6096079}
+--- !u!65 &65377070469843892
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1235130974385606}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.47042277, y: 1, z: 1.0270389}
+  m_Center: {x: -0.4012597, y: -0.0000008401584, z: 0.36656368}
 --- !u!82 &82474985573435942
 AudioSource:
   m_ObjectHideFlags: 1
@@ -1284,7 +1311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf0f822e8b2df1b42aab3c3c91711a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114624812996741906
+--- !u!114 &114410245229569588
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1292,17 +1319,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1594688365799870}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60f116c71baa44616b98194b5997d3c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 260e63dd106fd4074b1fbc4f0216931c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goal: {fileID: 0}
---- !u!114 &114942995483532978
+  _range: 10
+--- !u!114 &114549796043114528
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1594688365799870}
-  m_Enabled: 1
+  m_GameObject: {fileID: 1125297941774508}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a8d3da177551e4eaaa74d7f3460727b2, type: 3}
   m_Name: 
@@ -1311,6 +1338,18 @@ MonoBehaviour:
   obstacleRange: 5
   fireballPrefab: {fileID: 1956094904363052, guid: 1f9ef580ea5794f8c9de10a4c5fab2d6,
     type: 2}
+--- !u!114 &114928128520200960
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1235130974385606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e3dcf6e782b43aaa52a7bd76e0340a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 6
 --- !u!137 &137733363610005810
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
