@@ -36,10 +36,10 @@ public class ReactiveTarget : MonoBehaviour
         if(byStander != null)
             byStander.SetAlive(false);
 
-
+        _uiManager.UpdateKillsBar();
         StartCoroutine(Die());
 
-        _sceneController.ReSpawn();
+        /*_sceneController.ReSpawn();*/
        
     }
 
@@ -63,6 +63,6 @@ public class ReactiveTarget : MonoBehaviour
 
         yield return new WaitForSeconds(3);
         Destroy(this.gameObject);
-        _uiManager.UpdateKillsBar();
+        
     }
 }

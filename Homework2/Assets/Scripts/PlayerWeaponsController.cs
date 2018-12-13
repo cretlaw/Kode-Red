@@ -132,14 +132,18 @@ public class PlayerWeaponsController : MonoBehaviour
     {
         if (_playerGun == Guns.Smg)
         {
+/*
             _BulletHole = Instantiate(_handGunBulletHolePrefab, pos, Quaternion.FromToRotation(Vector3.up, normal));
+*/
             StartCoroutine(BulletholeIndicator());
 
         }
 
         else if (_playerGun == Guns.Rifle)
         {
+/*
             _BulletHole = Instantiate(_riffleBulletHolePrefab, pos, Quaternion.FromToRotation(Vector3.up, normal));
+*/
             StartCoroutine(BulletholeIndicator());
         }
 

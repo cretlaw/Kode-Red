@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 /*
 This script allows the player to move up, down, left and right
@@ -39,7 +40,8 @@ public class FPSInput : MonoBehaviour
 
 
         if(Input.GetKeyDown(KeyCode.R))
-            Application.LoadLevel(0);
+            SceneManager.LoadScene(2);
+           
 
         
         /*When the character presses on the Left Shift button 

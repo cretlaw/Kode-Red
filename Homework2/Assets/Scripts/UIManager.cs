@@ -59,19 +59,21 @@ public class UIManager : MonoBehaviour
 
         if (NumOfKills >= 15)
         {
-            _gameOverYWImg.enabled = true;
+            /*_gameOverYWImg.enabled = true;
             _gameOverText.enabled = true;
             //Prevents the player from moving and shooting only moving camera
             _fpsInput.enabled = false;
             _playerWeaponsController.enabled = false;
             _playerController.StopEnemyShooting();
-            _crossHair.enabled = false;
+            _crossHair.enabled = false;*/
 
             //Start the Victory Scene
-            StartCoroutine(PlayVictoryScene());
+            SceneManager.LoadScene("VictoryScene", LoadSceneMode.Single);
+            /*StartCoroutine(PlayVictoryScene());*/
 
             if (Input.GetKeyDown(KeyCode.R))
-                Application.LoadLevel(0);
+                SceneManager.LoadScene(1);
+               
 
         }
 
@@ -85,7 +87,7 @@ public class UIManager : MonoBehaviour
     //Create Victory Scene Coroutine
     IEnumerator PlayVictoryScene(){
 		yield return new WaitForSeconds(4);
-		SceneManager.LoadScene("VictoryScene", LoadSceneMode.Single);
+		
 	}
 
     public void helpScreenBack()

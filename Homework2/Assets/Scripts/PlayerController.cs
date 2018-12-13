@@ -50,18 +50,19 @@ public class PlayerController : MonoBehaviour
         if (health <= 0)
         {
 
-            _gameOver.GetComponent<Image>().enabled = true;
+            /*_gameOver.GetComponent<Image>().enabled = true;
             _crossHair.enabled = false;
             //Prevents the player from moving and shooting only moving camera
             _fpsInput.enabled = false;
             _playerWeaponsController.enabled = false;
-            StopEnemyShooting();
+            StopEnemyShooting();*/
 
             //Start the Losing Scene
-            StartCoroutine(PlayLoseScene());
+            SceneManager.LoadScene("LoseScene", LoadSceneMode.Single);
+            /*StartCoroutine(PlayLoseScene());*/
 
-            if (Input.GetKeyDown(KeyCode.R))
-                Application.LoadLevel(0);
+            
+
 
 
 
@@ -85,10 +86,10 @@ public class PlayerController : MonoBehaviour
     }
 
     //Create Defeated Scene Coroutine
-    IEnumerator PlayLoseScene(){
-		yield return new WaitForSeconds(4);
-		SceneManager.LoadScene("LoseScene", LoadSceneMode.Single);
-	}
+    /*IEnumerator PlayLoseScene(){
+        yield return new WaitForSeconds(4);
+        
+    }*/
 
     public void Hurt(int damage)
     {

@@ -18,6 +18,8 @@ public class Gun : MonoBehaviour
         
         _muzzleFlash = GetComponentInChildren<ParticleSystem>();
         _gunShot = GetComponent<AudioSource>();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
 
@@ -40,7 +42,7 @@ public class Gun : MonoBehaviour
                 {
                     _muzzleFlash.Play();
                     _gunShot.Play();
-                    _player.GetComponent<PlayerController>().Hurt(3);
+                    _player.GetComponent<PlayerController>().Hurt(2);
                     _shootOffSet = 0;
                 }
 

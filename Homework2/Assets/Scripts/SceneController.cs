@@ -30,7 +30,7 @@ public class SceneController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        IntialSpawn();
+        /*IntialSpawn();*/
         CreateFirstAidKits();
         _player = GameObject.Find("Player").GetComponent<PlayerController>();
         _uiManager = GameObject.Find("Controller").GetComponent<UIManager>();

@@ -15,8 +15,8 @@ EditorBuildSettings:
     path: Assets/ExtraScenes/MainMenu.unity
     guid: 5499184aa92f6495cab4a4de0b79c1f0
   - enabled: 1
-    path: Assets/_scenes/Current Scene/VrezhScene_DEC6_216PM.unity
-    guid: e964be085dd5049ecbad5df1d3142d0d
+    path: Assets/_scenes/Current Scene/VrezhScene_DEC11_951PM.unity
+    guid: f32d134c544bb4f4db4292163a880a58
   - enabled: 1
     path: Assets/ExtraScenes/VictoryScene.unity
     guid: eb9088c123af44c038bff304a87237d9
