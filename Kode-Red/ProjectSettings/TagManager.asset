@@ -12,6 +12,9 @@ TagManager:
   - Portal3
   - Portal4
   - byStander
+  - Off_Mesh_Platform
+  - Ground
+  - IntroText
   layers:
   - Default
   - TransparentFX
@@ -23,7 +26,7 @@ TagManager:
   - 
   - PostProcessing
   - Background
-  - 
+  - Gun Camera
   - 
   - 
   - 

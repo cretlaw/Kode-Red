@@ -1,16 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 /*
 This script allows the player to move up, down, left and right
 */
-
+/*A portion of the script allows the player to run */
 [RequireComponent(typeof(CharacterController))]
 [AddComponentMenu("Control Script/FPS Input")]
 public class FPSInput : MonoBehaviour
 {
     public float speed = 6.0f;
+    public float RunSpeed = 10.0f;
     public float gravity = -9.8f;
+    public bool isRunning = false;
 
     private CharacterController _charController;
     private SceneController _sceneController;
@@ -37,8 +40,19 @@ public class FPSInput : MonoBehaviour
 
 
         if(Input.GetKeyDown(KeyCode.R))
-            _sceneController.Reset();
+            SceneManager.LoadScene(2);
+           
 
-
+        
+        /*When the character presses on the Left Shift button 
+        speed is translated to Runspeed making the player run*/
+        if(Input.GetKey(KeyCode.LeftShift)){
+            isRunning = true;
+            speed = RunSpeed;
+            print("Running");
+        }else{
+            isRunning = false;
+            speed = 6.0f;
+        }
     }
 }

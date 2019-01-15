@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
+/*This script keeps track of player health, damage, increase in health and stops enemies from shooting at him */
 public class PlayerController : MonoBehaviour
 {
 
@@ -17,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private GameObject _gameOver;
     private SimpleHealthBar _healthBar;
     private Image _crossHair;
+    private AudioSource _healthAPickUpSound;
 
 
     void Start()
@@ -34,6 +38,7 @@ public class PlayerController : MonoBehaviour
 
         _crossHair = GameObject.Find("CrossHair").GetComponent<Image>();
 
+        _healthAPickUpSound = GetComponent<AudioSource>();
 
 
     }
@@ -45,23 +50,29 @@ public class PlayerController : MonoBehaviour
         if (health <= 0)
         {
 
-            _gameOver.GetComponent<Image>().enabled = true;
+            /*_gameOver.GetComponent<Image>().enabled = true;
             _crossHair.enabled = false;
             //Prevents the player from moving and shooting only moving camera
             _fpsInput.enabled = false;
             _playerWeaponsController.enabled = false;
-            StopEnemyShooting();
+            StopEnemyShooting();*/
 
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                _crossHair.enabled = true;
-                _gameOver.GetComponent<Image>().enabled = false;
-                _sceneController.Reset();
-                _fpsInput.enabled = true;
-                _playerWeaponsController.enabled = true;
-                
-            }
+            //Start the Losing Scene
+            SceneManager.LoadScene("LoseScene", LoadSceneMode.Single);
+            /*StartCoroutine(PlayLoseScene());*/
+
+            
+
+
+
+
+
         }
+
+
+
+        if (Input.GetKeyDown(KeyCode.Q))
+            EditorApplication.isPlaying = false;
 
         if (gameObject.transform.position.z < -13.5693f)
             RoomNumber = 3;
@@ -73,6 +84,13 @@ public class PlayerController : MonoBehaviour
 
 
     }
+
+    //Create Defeated Scene Coroutine
+    /*IEnumerator PlayLoseScene(){
+        yield return new WaitForSeconds(4);
+        
+    }*/
+
     public void Hurt(int damage)
     {
         health -= damage;
@@ -81,9 +99,12 @@ public class PlayerController : MonoBehaviour
 
 
     }
-
-    public void HealthPickup(int heal)
+    /*The Health Pickup script calls the PlayerController to access
+    the players health through health kit pickup and increases
+    the players health */
+    public void HealthP(int heal)
     {
+        _healthAPickUpSound.Play();
         health += heal;
         Debug.Log("Health: " + health);
     }
@@ -98,8 +119,8 @@ public class PlayerController : MonoBehaviour
         {
             foreach (var m in mutants)
             {
-                m.GetComponent<MutantMovement>().enabled = false;
-                m.GetComponentInChildren<MutantShoot>().enabled = false;
+                m.GetComponent<Enemy1Movement>().enabled = false;
+                /*m.GetComponentInChildren<MutantShoot>().enabled = false;*/
                 m.GetComponent<WanderingAI>().enabled = true;
                 m.GetComponent<ReactiveTarget>().enabled = false;
             }

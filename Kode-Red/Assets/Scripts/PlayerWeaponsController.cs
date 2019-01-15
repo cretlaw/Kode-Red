@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 
 //This script will act as the controller for the player's weapon system.
@@ -26,6 +27,7 @@ public class PlayerWeaponsController : MonoBehaviour
     [SerializeField] private GameObject _handGunBulletHolePrefab;
     [SerializeField] private GameObject _riffleBulletHolePrefab;
     private GameObject _BulletHole;
+    private AudioSource _gunFire;
 
 
     // Use this for initialization
@@ -33,21 +35,21 @@ public class PlayerWeaponsController : MonoBehaviour
     {
         // refer to the camera parent of the weapons object
         _camera = GetComponentInParent<Camera>();
-
+        _gunFire = GetComponent<AudioSource>();
         _playerGun = Guns.Rifle;
         _currentGun = 0;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        /*Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;*/
     }
 
    
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
 
-
+            _gunFire.Play();
             Vector3 point = new Vector3(_camera.pixelWidth / 2, _camera.pixelHeight / 2, 0);
             Ray ray = _camera.ScreenPointToRay(point);
             RaycastHit hit;
@@ -130,14 +132,18 @@ public class PlayerWeaponsController : MonoBehaviour
     {
         if (_playerGun == Guns.Smg)
         {
+/*
             _BulletHole = Instantiate(_handGunBulletHolePrefab, pos, Quaternion.FromToRotation(Vector3.up, normal));
+*/
             StartCoroutine(BulletholeIndicator());
 
         }
 
         else if (_playerGun == Guns.Rifle)
         {
+/*
             _BulletHole = Instantiate(_riffleBulletHolePrefab, pos, Quaternion.FromToRotation(Vector3.up, normal));
+*/
             StartCoroutine(BulletholeIndicator());
         }
 

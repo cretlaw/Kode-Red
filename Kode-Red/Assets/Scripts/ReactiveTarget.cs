@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.AI;
 
-
+/*This script is in charge of handling the action of an enemy dying*/
 public class ReactiveTarget : MonoBehaviour
 {
     private Animator _anim;
@@ -27,21 +27,19 @@ public class ReactiveTarget : MonoBehaviour
         if ( staticShootingEnemy!= null)
             staticShootingEnemy.SetAlive(false);
 
-        MutantShoot ms = GetComponent<MutantShoot>();
-        if(ms != null)
-            ms.SetAlive(false);
+        MutantShoot mv = GetComponent<MutantShoot>();
+        if(mv != null)
+            mv.SetAlive(false);
         
 
         BystanderMovement byStander = GetComponent<BystanderMovement>();
         if(byStander != null)
             byStander.SetAlive(false);
 
-       
         _uiManager.UpdateKillsBar();
-
         StartCoroutine(Die());
 
-        _sceneController.ReSpawn();
+        /*_sceneController.ReSpawn();*/
        
     }
 
@@ -65,5 +63,6 @@ public class ReactiveTarget : MonoBehaviour
 
         yield return new WaitForSeconds(3);
         Destroy(this.gameObject);
+        
     }
 }

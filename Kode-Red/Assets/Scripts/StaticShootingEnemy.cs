@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
 
+/*This script is in charge of checking and reacting enemie 2's states, like animations and proper time to attack*/
 public class StaticShootingEnemy : MonoBehaviour
 {
 
