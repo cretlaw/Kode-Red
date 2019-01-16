@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿#if UNITY_EDITOR
+using UnityEditor;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,3 +25,4 @@ public class SuperHealthPickup : MonoBehaviour {
 		Destroy(this.gameObject);
 	}
 }
+#endif

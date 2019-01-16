@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿#if UNITY_EDITOR
+using UnityEditor;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -66,6 +68,6 @@ public class MutantMovement : MonoBehaviour
     }
 
 }
-    
 
+#endif
 

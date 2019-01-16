@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEditor;
+using UnityEngine;
 using System.Collections;
 
 public class MutantMagicSpell : MonoBehaviour {
@@ -17,3 +19,4 @@ public class MutantMagicSpell : MonoBehaviour {
 		Destroy(this.gameObject);
 	}
 }
+#endif

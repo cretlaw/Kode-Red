@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿#if UNITY_EDITOR
+using UnityEditor;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 /*Through the box collider the player
@@ -24,3 +26,4 @@ public class HealthPickup : MonoBehaviour {
 		Destroy(this.gameObject);
 	}
 }
+#endif

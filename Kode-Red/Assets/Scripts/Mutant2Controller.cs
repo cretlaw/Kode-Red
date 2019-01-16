@@ -1,4 +1,6 @@
-﻿using System;
+﻿#if UNITY_EDITOR
+using UnityEditor;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -89,3 +91,4 @@ public class Mutant2Controller : MonoBehaviour
 
     //TODO: Do something similar to mutant and bystander
 }
+#endif

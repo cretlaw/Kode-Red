@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEditor;
+
+using UnityEngine;
 using System.Collections;
 using UnityEngine.AI;
 
@@ -67,3 +70,4 @@ public class ReactiveTarget : MonoBehaviour
         
     }
 }
+#endif

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEditor;
+using UnityEngine;
 using System.Collections;
 
 public class MutantShoot : MonoBehaviour {
@@ -40,3 +42,4 @@ public class MutantShoot : MonoBehaviour {
 		_alive = alive;
 	}
 }
+#endif

@@ -1,4 +1,6 @@
-﻿using System;
+﻿#if UNITY_EDITOR
+using UnityEditor;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -149,3 +151,4 @@ public class PlayerWeaponsController : MonoBehaviour
 
     }
 }
+#endif
